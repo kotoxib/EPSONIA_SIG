@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EPSON.IA · Iniciar Sesión</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="Login1.css">
+</head>
+<body>
+
+<!-- LEFT -->
+<div class="left-panel">
+  <div class="slide active" style="background-image:url('img/Banner3_1.png')"></div>
+  <div class="slide" style="background-image:url('img/Banner3_2.png')"></div>
+  <div class="slide" style="background-image:url('img/Banner3_3.png')"></div>
+  <div class="left-pattern"></div>
+  <div class="left-overlay"></div>
+  <div class="left-content">
+    <div class="brand-badge">
+  <img src="img/esponia_logo (2).png" alt="Logo EPSON" class="brand-logo">
+</div>
+    <h2 class="left-title">Gestión Documental<br></h2>
+    <p class="left-sub">Plataforma integral EPSON para el procesamiento, análisis y consulta de documentos de forma automatizada.</p>
+  </div>
+  <div class="left-dots">
+    <div class="dot active" id="d0"></div>
+    <div class="dot" id="d1"></div>
+    <div class="dot" id="d2"></div>
+  </div>
+</div>
+
+<!-- RIGHT -->
+<div class="right-panel">
+  <div class="login-box">
+    <div class="login-logo">
+        <img src="img/isotipo.png" class="brand-clean">
+      <div>
+        <div style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:800;color:var(--blue);letter-spacing:-.3px">EPSON<span style="color:var(--blueAcc)">.IA</span></div>
+        <div style="font-size:10px;color:var(--muted);font-weight:500;letter-spacing:.05em;text-transform:uppercase">Powered by Sigcomt</div>
+      </div>
+    </div>
+
+    <div id="login-form">
+    <h1 class="login-title">Bienvenido de vuelta</h1>
+    <p class="login-sub">Ingresa tus credenciales para acceder al sistema</p>
+
+    <div class="form-group">
+      <label class="f-label" for="correo">Usuario / Correo</label>
+      <div class="f-wrap">
+        <input id="correo" type="email" class="f-input" placeholder="usuario@epson.com"/>
+      </div>
+      <p id="correo-err" class="err">Ingresa un correo válido.</p>
+    </div>
+
+    <div class="form-group">
+      <label class="f-label" for="password">Contraseña</label>
+      <div class="f-wrap">
+        <input id="password" type="password" class="f-input" placeholder="••••••••" style="padding-right:44px"/>
+        <button type="button" class="eye-btn" onclick="togglePass()" id="eye-btn">
+          <svg id="eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 4.411m0 0L21 21"/>
+          </svg>
+        </button>
+      </div>
+      <p id="pass-err" class="err">La contraseña es requerida.</p>
+    </div>
+
+    <div class="remember">
+      <input type="checkbox" id="remember"/>
+      <label for="remember">Recordar contraseña</label>
+    </div>
+
+    <button class="btn-login" onclick="handleLogin()">Ingresar al Sistema</button>
+
+    <div class="login-footer" style="margin-top:16px">
+      ¿Problemas para acceder? <a href="#">Contacta soporte</a>
+    </div>
+    </div><!-- /login-form -->
+
+    <!-- ROLE SELECTION (shown when user has multiple roles) -->
+    <div id="role-selection" style="display:none">
+      <div style="margin-bottom:24px">
+        <button onclick="backToLogin()" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--muted);font-size:13px;margin-bottom:20px;padding:0;font-family:inherit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Volver
+        </button>
+        <h2 style="font-family:'Outfit',sans-serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:6px">Selecciona tu rol</h2>
+        <p style="font-size:13px;color:var(--muted)">Hola, <strong id="rs-username"></strong>. Tienes más de un rol asignado.<br>Selecciona con qué perfil deseas ingresar.</p>
+      </div>
+      <div id="rs-roles-grid" style="display:flex;flex-direction:column;gap:12px"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Mock user DB — back end will replace with API call
+const USERS = [
+  {email:'admin@epson.com',  pass:'admin123',  name:'Mario Uribe',    roles:['Administrador','Operador','Visor']},
+  {email:'operador@epson.com',pass:'op123',    name:'Ana García',     roles:['Operador']},
+  {email:'visor@epson.com',  pass:'visor123',  name:'Carlos Santos',  roles:['Visor']},
+  {email:'demo@epson.com',   pass:'demo',      name:'Usuario Demo',   roles:['Administrador','Operador']},
+];
+
+function handleLogin(){
+  const correo = document.getElementById('correo').value.trim();
+  const pass   = document.getElementById('password').value.trim();
+  const correo_err=document.getElementById('correo-err');
+  const pass_err=document.getElementById('pass-err');
+  correo_err.style.display='none'; pass_err.style.display='none';
+  if(!correo){correo_err.style.display='block';return;}
+  if(!pass){pass_err.style.display='block';return;}
+
+  // Find user (back end: POST /api/login)
+  const user = USERS.find(u=>u.email.toLowerCase()===correo.toLowerCase() && u.pass===pass);
+  if(!user){
+    correo_err.textContent='Credenciales incorrectas. Intenta de nuevo.';
+    correo_err.style.display='block';
+    return;
+  }
+  localStorage.setItem('epson_auth','true');
+  localStorage.setItem('epson_user',user.name);
+  localStorage.setItem('epson_email',user.email);
+  localStorage.setItem('epson_roles',JSON.stringify(user.roles));
+
+  if(user.roles.length > 1){
+    // Show role selection
+    showRoleSelection(user);
+  } else {
+    localStorage.setItem('epson_active_role', user.roles[0]);
+    window.location.href = 'epsonia2.html';
+  }
+}
+
+function showRoleSelection(user){
+  document.getElementById('login-form').style.display='none';
+  const rs=document.getElementById('role-selection');
+  rs.style.display='block';
+  document.getElementById('rs-username').textContent=user.name;
+  const grid=document.getElementById('rs-roles-grid');
+  const ROLE_ICONS={
+    'Administrador':'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M12 2l3 6.5L22 9.3l-5 4.9 1.2 6.8L12 18l-6.2 3 1.2-6.8L2 9.3l7-.8z"/></svg>',
+    'Operador':'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>',
+    'Visor':'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
+  };
+  const ROLE_DESC={
+    'Administrador':'Acceso total al sistema: gestión de usuarios, configuración y todas las funciones.',
+    'Operador':'Gestión de documentos, consultas IA y generación de documentos.',
+    'Visor':'Solo lectura: puede ver y buscar documentos procesados.'
+  };
+  grid.innerHTML=user.roles.map(r=>`
+    <div onclick="selectRole('${r}')" style="background:#fff;border:2px solid var(--border);border-radius:14px;padding:20px 16px;cursor:pointer;transition:all .18s;text-align:center" onmouseover="this.style.borderColor='var(--blue)';this.style.boxShadow='0 4px 16px rgba(16,33,139,.12)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none';this.style.transform='none'">
+      <div style="width:54px;height:54px;border-radius:14px;background:var(--blueSoft);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">${ROLE_ICONS[r]||ROLE_ICONS['Operador']}</div>
+      <p style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px">${r}</p>
+      <p style="font-size:11.5px;color:var(--muted);line-height:1.5">${ROLE_DESC[r]||''}</p>
+    </div>`).join('');
+}
+
+function selectRole(role){
+  localStorage.setItem('epson_active_role', role);
+  window.location.href = 'epsonia2.html';
+}
+
+function backToLogin(){
+  document.getElementById('role-selection').style.display='none';
+  document.getElementById('login-form').style.display='block';
+}
+
+let passVisible = false;
+function togglePass(){
+  const input = document.getElementById('password');
+  passVisible = !passVisible;
+  input.type = passVisible ? 'text' : 'password';
+  document.getElementById('eye-btn').style.color = passVisible ? 'var(--blue)' : 'var(--textLight)';
+}
+
+// Apply login personalización from configuración
+(function applyLoginConfig(){
+  try{
+    const cfg=JSON.parse(localStorage.getItem('epson_login_config')||'{}');
+    if(cfg.title){
+      const t=document.querySelector('.left-title');
+      if(t) t.textContent=cfg.title;
+    }
+    if(cfg.subtitle){
+      const s=document.querySelector('.left-sub');
+      if(s) s.textContent=cfg.subtitle;
+    }
+    if(cfg.banners&&cfg.banners.length){
+      document.querySelectorAll('.slide').forEach((sl,i)=>{
+        if(cfg.banners[i]) sl.style.backgroundImage=`url('${cfg.banners[i]}')`;
+      });
+    }
+  }catch(e){}
+})();
+
+// Slider
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.dot');
+setInterval(()=>{
+  slides[cur].classList.remove('active'); dots[cur].classList.remove('active');
+  cur = (cur+1)%slides.length;
+  slides[cur].classList.add('active'); dots[cur].classList.add('active');
+}, 4500);
+document.addEventListener('keydown',e=>{if(e.key==='Enter') handleLogin();});
+</script>
+</body>
+</html>
