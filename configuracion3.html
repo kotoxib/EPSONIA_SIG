@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Configuración – EPSON.IA</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="configuracion3.css">
+</head>
+<body>
+
+<!-- ══════════════════════════ SIDEBAR ══════════════════════════ -->
+<aside id="sidebar">
+  <div class="flex items-center gap-3 px-3 py-4" style="border-bottom:1px solid rgba(255,255,255,.07)">
+    <button onclick="toggleSidebar()" class="w-9 h-9 rounded-xl flex items-center justify-center transition-colors flex-shrink-0" style="color:#4A6080" onmouseover="this.style.background='rgba(255,255,255,.08)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#4A6080'">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <span class="nav-label text-sm font-bold tracking-widest" style="color:#3389D9;font-family:'Space Grotesk',sans-serif">CONFIG</span>
+  </div>
+
+  <nav class="flex-1 overflow-y-auto py-4 px-2 space-y-0.5">
+    <!-- SEGURIDAD -->
+    <p class="nav-group-title">Seguridad</p>
+    <button onclick="showView('usuarios')" id="nav-usuarios" class="nav-btn-sb nav-active">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <span class="nav-label">Usuarios</span>
+    </button>
+    <button onclick="showView('roles')" id="nav-roles" class="nav-btn-sb">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      <span class="nav-label">Roles</span>
+    </button>
+
+    <!-- MANTENIMIENTO -->
+    <p class="nav-group-title">Mantenimiento</p>
+    <button onclick="showView('notarias')" id="nav-notarias" class="nav-btn-sb">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      <span class="nav-label">Gestión de Notarías</span>
+    </button>
+    <button onclick="showView('aplicativos')" id="nav-aplicativos" class="nav-btn-sb">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+      <span class="nav-label">Gestión de Aplicativos</span>
+    </button>
+
+
+    <!-- PERSONALIZACIÓN -->
+    <p class="nav-group-title">Personalización</p>
+    <button onclick="showView('login-config')" id="nav-login-config" class="nav-btn-sb">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+      <span class="nav-label">Personalización Login</span>
+    </button>
+
+    <!-- AYUDA -->
+    <p class="nav-group-title">Ayuda</p>
+    <button onclick="showView('ayuda-dash')" id="nav-ayuda-dash" class="nav-btn-sb">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+      <span class="nav-label">Dashboard</span>
+    </button>
+    <button onclick="showView('faq')" id="nav-faq" class="nav-btn-sb">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span class="nav-label">Preguntas Frecuentes</span>
+    </button>
+  </nav>
+
+  <div class="p-3" style="border-top:1px solid rgba(255,255,255,.07)">
+    <a href="epsonia2.html" class="nav-btn-sb">
+      <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+      <span class="nav-label">Volver al portal</span>
+    </a>
+  </div>
+</aside>
+
+<!-- ══════════════════════════ MAIN ══════════════════════════ -->
+<div class="flex-1 flex flex-col overflow-hidden">
+
+  <!-- TOPBAR -->
+  <header class="topbar flex items-center justify-between px-6 py-3.5 flex-shrink-0">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft);border:1px solid rgba(0,102,204,.2)">
+        <svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      </div>
+      <div>
+        <p class="text-xs" style="color:var(--muted)">EPSON.IA · Configuración del sistema</p>
+        <p id="page-title" class="text-sm font-semibold" style="color:var(--text)">Seguridad › Usuarios</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <button onclick="toggleDropdown('user-dropdown')" class="flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-xl hover:bg-gray-100 transition-colors">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white" style="background:linear-gradient(135deg,var(--blue),var(--blueD))">SA</div>
+          <span class="hidden sm:block text-sm font-semibold" style="color:var(--text)">Administrador</span>
+          <svg class="w-4 h-4" style="color:var(--muted)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="user-dropdown" class="dropdown-menu absolute right-0 top-full mt-2 w-44 py-1">
+          <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-50" style="color:var(--text)">Mi Perfil</a>
+          <div class="border-t my-1" style="border-color:var(--border)"></div>
+          <a href="Login1.html" class="block px-4 py-2 text-sm text-red-500 hover:bg-red-50">Cerrar sesión</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- VIEWS CONTAINER -->
+  <div class="flex-1 overflow-y-auto p-6">
+
+    <!-- ══════ VIEW: USUARIOS ══════ -->
+    <div id="view-usuarios" class="view active fu">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-lg font-bold" style="font-family:'Space Grotesk',sans-serif">Gestión de Usuarios</h2>
+        <button class="btn-blue" onclick="openModal('modal-new-user')">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Nuevo Usuario
+        </button>
+      </div>
+      <!-- Filters -->
+      <div class="mb-5 p-4 rounded-2xl border flex flex-wrap gap-4 items-end" style="background:#fff;border-color:var(--border)">
+        <div class="flex-1" style="min-width:220px">
+          <label class="f-label">Buscar</label>
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" style="color:var(--textLight)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" placeholder="Nombre, username..." class="f-input" style="padding-left:2.25rem"/>
+          </div>
+        </div>
+        <div>
+          <label class="f-label">Notaría</label>
+          <select class="f-input" style="min-width:160px"><option>Todas las notarías</option><option>Notaría Central</option><option>Notaría Norte</option></select>
+        </div>
+        <div>
+          <label class="f-label">Estado</label>
+          <select class="f-input" style="min-width:110px"><option>Todos los estados</option><option>Activo</option><option>Inactivo</option></select>
+        </div>
+        <button class="btn-blue" style="align-self:flex-end">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
+          Filtrar
+        </button>
+      </div>
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 mb-5">
+        <div class="stat-card p-4 flex items-center gap-4">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-5 h-5" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+          <div><p class="text-2xl font-bold" style="font-family:'Space Grotesk',sans-serif;color:var(--blue)">24</p><p class="text-xs" style="color:var(--muted)">Usuarios totales</p></div>
+        </div>
+        <div class="stat-card p-4 flex items-center gap-4">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center bg-green-50"><svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div><p class="text-2xl font-bold" style="font-family:'Space Grotesk',sans-serif;color:#059669">20</p><p class="text-xs" style="color:var(--muted)">Activos</p></div>
+        </div>
+        <div class="stat-card p-4 flex items-center gap-4">
+          <div class="w-11 h-11 rounded-xl flex items-center justify-center bg-red-50"><svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div><p class="text-2xl font-bold text-red-500" style="font-family:'Space Grotesk',sans-serif">4</p><p class="text-xs" style="color:var(--muted)">Inactivos</p></div>
+        </div>
+      </div>
+      <!-- Table -->
+      <div class="bg-white rounded-2xl border overflow-hidden" style="border-color:var(--border)">
+        <table class="data-table">
+          <thead><tr>
+            <th>#</th><th>Username</th><th>Nombre completo</th><th>Notaría</th><th>Rol</th><th>Email</th><th>Estado</th><th>Acción</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>1</td><td class="font-semibold">jperez</td><td>Juan Pérez García</td><td>Notaría Central</td><td><span class="badge-role">Administrador</span></td><td>jperez@epson.com</td><td><span class="badge-active">Activo</span></td>
+            <td><div class="flex gap-2">
+              <button class="btn-icon btn-edit" onclick="openModal('modal-edit-user')" title="Editar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button>
+              <button class="btn-icon btn-view" onclick="openModal('modal-change-pass')" title="Cambiar contraseña"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg></button>
+            </div></td></tr>
+            <tr><td>2</td><td class="font-semibold">mrodriguez</td><td>María Rodríguez</td><td>Notaría Norte</td><td><span class="badge-role">Operador</span></td><td>mrodriguez@epson.com</td><td><span class="badge-active">Activo</span></td>
+            <td><div class="flex gap-2">
+              <button class="btn-icon btn-edit" onclick="openModal('modal-edit-user')" title="Editar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button>
+              <button class="btn-icon btn-view" onclick="openModal('modal-change-pass')" title="Cambiar contraseña"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg></button>
+            </div></td></tr>
+            <tr><td>3</td><td class="font-semibold">csantos</td><td>Carlos Santos Lima</td><td>Notaría Central</td><td><span class="badge-role">Visor</span></td><td>csantos@epson.com</td><td><span class="badge-inactive">Inactivo</span></td>
+            <td><div class="flex gap-2">
+              <button class="btn-icon btn-edit" onclick="openModal('modal-edit-user')" title="Editar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button>
+              <button class="btn-icon btn-view" onclick="openModal('modal-change-pass')" title="Cambiar contraseña"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg></button>
+            </div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══════ VIEW: ROLES ══════ -->
+    <div id="view-roles" class="view fu">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-lg font-bold" style="font-family:'Space Grotesk',sans-serif">Gestión de Roles</h2>
+        <button class="btn-blue" onclick="openModal('modal-new-role')">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Nuevo Rol
+        </button>
+      </div>
+      <div class="mb-5 p-4 rounded-2xl border flex flex-wrap gap-4 items-end" style="background:#fff;border-color:var(--border)">
+        <div class="flex-1" style="min-width:220px">
+          <label class="f-label">Buscar</label>
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" style="color:var(--textLight)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" placeholder="Nombre del rol..." class="f-input" style="padding-left:2.25rem"/>
+          </div>
+        </div>
+        <div>
+          <label class="f-label">Notaría</label>
+          <select class="f-input" style="min-width:160px"><option>Todas las notarías</option><option>Notaría Central</option><option>Notaría Norte</option></select>
+        </div>
+        <div>
+          <label class="f-label">Estado</label>
+          <select class="f-input" style="min-width:110px"><option>Todos los estados</option><option>Activo</option><option>Inactivo</option></select>
+        </div>
+        <button class="btn-blue" style="align-self:flex-end">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
+          Filtrar
+        </button>
+      </div>
+      <div class="bg-white rounded-2xl border overflow-hidden" style="border-color:var(--border)">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Notaría</th><th>Aplicativo</th><th>Rol</th><th>Descripción</th><th>Estado</th><th>Acción</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Notaría Central</td><td>EPSON.IA</td><td class="font-semibold">Administrador</td><td style="color:var(--muted)">Acceso total al sistema</td><td><span class="badge-active">Activo</span></td><td><button class="btn-icon btn-edit" onclick="openModal('modal-new-role')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button></td></tr>
+            <tr><td>2</td><td>Notaría Central</td><td>EPSON.IA</td><td class="font-semibold">Operador</td><td style="color:var(--muted)">Gestión de documentos</td><td><span class="badge-active">Activo</span></td><td><button class="btn-icon btn-edit" onclick="openModal('modal-new-role')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button></td></tr>
+            <tr><td>3</td><td>Notaría Norte</td><td>EPSON.IA</td><td class="font-semibold">Visor</td><td style="color:var(--muted)">Solo lectura</td><td><span class="badge-inactive">Inactivo</span></td><td><button class="btn-icon btn-edit" onclick="openModal('modal-new-role')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══════ VIEW: NOTARÍAS ══════ -->
+    <div id="view-notarias" class="view fu">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-lg font-bold" style="font-family:'Space Grotesk',sans-serif">Gestión de Notarías</h2>
+        <button class="btn-blue" onclick="openModal('modal-new-notaria')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Nueva Notaría</button>
+      </div>
+      <div class="mb-5 p-4 rounded-2xl border flex flex-wrap gap-4 items-end" style="background:#fff;border-color:var(--border)">
+        <div class="flex-1" style="min-width:220px">
+          <label class="f-label">Buscar</label>
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" style="color:var(--textLight)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" placeholder="Razón social, RUC..." class="f-input" style="padding-left:2.25rem"/>
+          </div>
+        </div>
+        <div>
+          <label class="f-label">Estado</label>
+          <select class="f-input" style="min-width:110px"><option>Todos los estados</option><option>Activo</option><option>Inactivo</option></select>
+        </div>
+        <button class="btn-blue" style="align-self:flex-end">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
+          Filtrar
+        </button>
+      </div>
+      <div class="bg-white rounded-2xl border overflow-hidden" style="border-color:var(--border)">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Razón Social</th><th>RUC</th><th>Dirección</th><th>Email</th><th>Teléfono</th><th>Estado</th><th>Acción</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td class="font-semibold">Notaría Central SAC</td><td>20512345678</td><td>Av. Javier Prado 1234, Lima</td><td>central@notaria.com</td><td>01-234-5678</td><td><span class="badge-active">Activo</span></td><td><button class="btn-icon btn-edit" onclick="openModal('modal-new-notaria')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button></td></tr>
+            <tr><td>2</td><td class="font-semibold">Notaría Norte EIRL</td><td>20598765432</td><td>Calle Los Olivos 456, SMP</td><td>norte@notaria.com</td><td>01-876-5432</td><td><span class="badge-active">Activo</span></td><td><button class="btn-icon btn-edit" onclick="openModal('modal-new-notaria')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+   <!-- ══════════════════ VISTA: APLICATIVOS ══════════════════ -->
+    <div id="view-aplicativos" class="view">
+      <div class="flex items-center justify-between mb-5">
+        <div>
+          <h2 class="text-xl font-display font-bold text-gray-800">Gestión de Aplicativos</h2>
+          <p class="text-sm text-brand-muted mt-0.5">Registro de sistemas registrados en la plataforma</p>
+        </div>
+        <button onclick="openModal('modal-aplicativo')" class="btn-blue">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+          Nuevo Aplicativo
+        </button>
+      </div>
+      <div class="mb-5 p-4 rounded-2xl border flex flex-wrap gap-4 items-end" style="background:#fff;border-color:var(--border)">
+        <div class="flex-1" style="min-width:220px">
+          <label class="f-label">Buscar</label>
+          <div class="relative">
+            <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" style="color:var(--textLight)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" placeholder="Nombre, código del aplicativo..." class="f-input" style="padding-left:2.25rem"/>
+          </div>
+        </div>
+        <div>
+          <label class="f-label">Notaría</label>
+          <select class="f-input" style="min-width:160px"><option>Todas las notarías</option><option>Notaría Central</option><option>Notaría Norte</option></select>
+        </div>
+        <div>
+          <label class="f-label">Estado</label>
+          <select class="f-input" style="min-width:110px"><option>Todos</option><option>Activo</option><option>Inactivo</option></select>
+        </div>
+        <button class="btn-blue" style="align-self:flex-end">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"/></svg>
+          Filtrar
+        </button>
+      </div>
+      <div class="stat-card overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-3.5 border-b border-gray-100">
+          <p class="text-sm font-semibold text-gray-800">Lista de Aplicativos</p>
+          <span class="text-xs text-brand-muted">3 registros</span>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Notaría</th><th>Nombre</th><th>Descripción</th><th>Estado</th><th>Acciones</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Notaría Central</td>
+              <td class="font-medium">Consulta IA</td>
+              <td class="text-brand-muted">Consulta de Documentos cargados en el Sistema</td>
+              <td><span class="badge-active">Activo</span></td>
+              <td><div class="flex gap-1.5">
+                <button class="btn-icon btn-view" onclick="openModal('modal-aplicativo')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button>
+                <button class="btn-icon btn-edit" onclick="openModal('modal-aplicativo')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
+                <button class="btn-icon btn-del"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>Notaría Norte</td>
+              <td class="font-medium">Busqueda de Documentos</td>
+              <td class="text-brand-muted">Busqueda manual de los documentos cargados en el Sistema</td>
+              <td><span class="badge-active">Activo</span></td>
+              <td><div class="flex gap-1.5">
+                <button class="btn-icon btn-view" onclick="openModal('modal-aplicativo')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button>
+                <button class="btn-icon btn-edit" onclick="openModal('modal-aplicativo')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
+                <button class="btn-icon btn-del"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
+              </div></td>
+            </tr>
+            <tr>
+              <td>Notaría Central</td>
+              <td class="font-medium">Generación de Documentos</td>
+              <td class="text-brand-muted">Consultas sobre formatos para realizar trámites</td>
+              <td><span class="badge-active">Activo</span></td>
+              <td><div class="flex gap-1.5">
+                <button class="btn-icon btn-view" onclick="openModal('modal-aplicativo')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button>
+                <button class="btn-icon btn-edit" onclick="openModal('modal-aplicativo')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></button>
+                <button class="btn-icon btn-del"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
+              </div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+
+    <!-- ══════ VIEW: GESTIÓN DE PLANTILLAS ══════ -->
+    <div id="view-plantillas" class="view fu">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-lg font-bold" style="font-family:'Space Grotesk',sans-serif">Gestión de Plantillas</h2>
+        <button class="btn-blue" onclick="openModal('modal-new-template')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Nueva Plantilla</button>
+      </div>
+      <div class="flex flex-wrap gap-3 mb-5">
+        <input class="filter-input" placeholder="Buscar plantilla..." style="min-width:200px"/>
+        <select class="filter-input"><option>Todas las notarías</option></select>
+        <select class="filter-input"><option>Todos los estados</option><option>Activo</option><option>Inactivo</option></select>
+      </div>
+      <div class="bg-white rounded-2xl border overflow-hidden" style="border-color:var(--border)">
+        <table class="data-table">
+          <thead><tr><th>#</th><th>Notaría</th><th>Nombre</th><th>Tipo</th><th>Etiquetas</th><th>Estado</th><th>Acción</th></tr></thead>
+          <tbody id="templateTableBody">
+            <tr><td>1</td><td>Notaría Central</td><td class="font-semibold">Contrato de Servicios v2</td><td>Contrato</td><td><span class="badge-role">servicios</span> <span class="badge-role">legal</span></td><td><span class="badge-active">Activo</span></td>
+            <td><div class="flex gap-2">
+              <button class="btn-icon btn-view" title="Visualizar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button>
+              <button class="btn-icon btn-edit" onclick="openModal('modal-new-template')" title="Editar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button>
+              <button class="btn-icon" style="background:#FEF3C7;color:#92400E" title="Descargar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg></button>
+            </div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══════ VIEW: PERSONALIZACIÓN LOGIN ══════ -->
+    <div id="view-login-config" class="view fu">
+      <h2 class="text-lg font-bold mb-6" style="font-family:'Space Grotesk',sans-serif">Personalización de Login</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Left: Controls -->
+        <div class="space-y-5">
+          <!-- Banners -->
+          <div class="bg-white rounded-2xl border p-5" style="border-color:var(--border)">
+            <p class="font-semibold mb-4 text-sm flex items-center gap-2"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>Banners del Slider (3 imágenes)</p>
+            <div class="grid grid-cols-3 gap-3" id="bannerGrid">
+              <div>
+                <p class="text-xs font-semibold mb-1" style="color:var(--muted)">Banner 1</p>
+                <label class="banner-upload block" onclick="document.getElementById('banner1').click()">
+                  <input type="file" id="banner1" accept="image/*" class="hidden" onchange="loadBanner(1,this)"/>
+                  <div id="banner1-preview" class="w-full h-16 rounded-lg flex items-center justify-center text-xs" style="background:var(--blueSoft);color:var(--blue);border:1.5px dashed rgba(0,102,204,.4)">
+                    <span>+ Subir</span>
+                  </div>
+                </label>
+              </div>
+              <div>
+                <p class="text-xs font-semibold mb-1" style="color:var(--muted)">Banner 2</p>
+                <label class="banner-upload block" onclick="document.getElementById('banner2').click()">
+                  <input type="file" id="banner2" accept="image/*" class="hidden" onchange="loadBanner(2,this)"/>
+                  <div id="banner2-preview" class="w-full h-16 rounded-lg flex items-center justify-center text-xs" style="background:var(--blueSoft);color:var(--blue);border:1.5px dashed rgba(0,102,204,.4)"><span>+ Subir</span></div>
+                </label>
+              </div>
+              <div>
+                <p class="text-xs font-semibold mb-1" style="color:var(--muted)">Banner 3</p>
+                <label class="banner-upload block" onclick="document.getElementById('banner3').click()">
+                  <input type="file" id="banner3" accept="image/*" class="hidden" onchange="loadBanner(3,this)"/>
+                  <div id="banner3-preview" class="w-full h-16 rounded-lg flex items-center justify-center text-xs" style="background:var(--blueSoft);color:var(--blue);border:1.5px dashed rgba(0,102,204,.4)"><span>+ Subir</span></div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Texts -->
+          <div class="bg-white rounded-2xl border p-5" style="border-color:var(--border)">
+            <p class="font-semibold mb-4 text-sm flex items-center gap-2"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>Textos del Login</p>
+            <div class="space-y-4">
+              <div>
+                <label class="f-label">Título principal</label>
+                <input class="f-input" id="loginTitleInput" type="text" placeholder="Suite de Gestión Inteligente" maxlength="60" oninput="updatePreview()"/>
+              </div>
+              <div>
+                <label class="f-label">Subtítulo</label>
+                <textarea class="f-input" id="loginSubtitleInput" rows="2" placeholder="Plataforma integral para la gestión..." maxlength="120" oninput="updatePreview()" style="resize:none"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logo position -->
+          <div class="bg-white rounded-2xl border p-5" style="border-color:var(--border)">
+            <p class="font-semibold mb-3 text-sm flex items-center gap-2"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>Posición del Logo</p>
+            <p class="text-xs mb-3" style="color:var(--muted)">Selecciona dónde aparecerá el logo en el panel izquierdo del login</p>
+            <div class="pos-grid" id="posGrid">
+              <button class="pos-btn" onclick="setLogoPos('top-left')">↖ Superior Izq.</button>
+              <button class="pos-btn on" onclick="setLogoPos('center')" id="pos-center">● Centro</button>
+              <button class="pos-btn" onclick="setLogoPos('top-right')">↗ Superior Der.</button>
+              <button class="pos-btn" onclick="setLogoPos('center-left')">← Centro Izq.</button>
+              <button class="pos-btn" onclick="setLogoPos('center-right')">→ Centro Der.</button>
+              <button class="pos-btn" onclick="setLogoPos('bottom-left')">↙ Inferior Izq.</button>
+              <button class="pos-btn" onclick="setLogoPos('bottom-center')">↓ Inferior Centro</button>
+              <button class="pos-btn" onclick="setLogoPos('bottom-right')">↘ Inferior Der.</button>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <button class="btn-blue" onclick="saveLoginConfig()">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Guardar configuración
+            </button>
+            <button class="btn-secondary" onclick="resetLoginConfig()">Restablecer</button>
+          </div>
+        </div>
+
+        <!-- Right: Preview -->
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color:var(--muted)">Vista previa del login</p>
+          <!-- Mirrors Login1 exactly: left 58% + right 42% -->
+          <div class="login-preview" style="height:440px;position:relative;overflow:hidden;display:flex">
+            <!-- LEFT PANEL (Login1 style) -->
+            <div id="previewPanel" style="flex:0 0 58%;position:relative;overflow:hidden;background:#0A1660">
+              <!-- Banner preview -->
+              <div id="preview-banner-bg" style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(16,33,139,.9),rgba(10,22,96,.7),rgba(74,108,247,.4));z-index:1"></div>
+              <!-- Dot pattern -->
+              <div style="position:absolute;inset:0;z-index:2;opacity:.06;background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:28px 28px"></div>
+              <!-- Content -->
+              <div id="previewContent" style="position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center">
+                <div class="brand-badge">
+                <img src="img/esponia_logo (2).png" alt="Logo EPSON" class="brand-logo">
+                </div>
+                <p id="previewTitle" style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:10px">Gestión Documental</p>
+                <p id="previewSubtitle" style="font-size:12px;color:rgba(255,255,255,.65);max-width:220px;line-height:1.6">Plataforma integral EPSON para el procesamiento y consulta de documentos.</p>
+              </div>
+              <!-- Dots nav -->
+              <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:4">
+                <div id="pvdot0" style="width:18px;height:5px;border-radius:3px;background:#fff;transition:all .3s"></div>
+                <div id="pvdot1" style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.35);transition:all .3s"></div>
+                <div id="pvdot2" style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.35);transition:all .3s"></div>
+              </div>
+            </div>
+            <!-- RIGHT PANEL (Login1 style) -->
+            <div style="flex:1;background:#F4F6FF;display:flex;align-items:center;justify-content:center;padding:20px;position:relative">
+              <div style="position:absolute;top:-30px;right:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(74,108,247,.1),transparent);pointer-events:none"></div>
+              <div style="width:100%;max-width:190px">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:18px">
+                  <div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,#10218B,#4A6CF7);display:flex;align-items:center;justify-content:center">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="3" rx="1"/><rect x="3" y="10.5" width="14" height="3" rx="1"/><rect x="3" y="18" width="10" height="3" rx="1"/></svg>
+                  </div>
+                  <div>
+                    <div style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:800;color:#10218B">EPSON<span style="color:#4A6CF7">.IA</span></div>
+                    <div style="font-size:8px;color:#9CA3AF;text-transform:uppercase;letter-spacing:.04em">Powered by Sigcomt</div>
+                  </div>
+                </div>
+                <p style="font-family:'Outfit',sans-serif;font-size:14px;font-weight:700;color:#1A1F3C;margin-bottom:14px">Bienvenido de vuelta</p>
+                <div style="margin-bottom:10px"><div style="font-size:8px;font-weight:700;color:#10218B;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">USUARIO / CORREO</div><div style="height:30px;border:1.5px solid #DDE3F5;border-radius:8px;background:#fff"></div></div>
+                <div style="margin-bottom:12px"><div style="font-size:8px;font-weight:700;color:#10218B;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px">CONTRASEÑA</div><div style="height:30px;border:1.5px solid #DDE3F5;border-radius:8px;background:#fff"></div></div>
+                <div style="height:32px;border-radius:8px;background:linear-gradient(135deg,#10218B,#1A3AAF);display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:10px;font-weight:700;font-family:'Outfit',sans-serif">INGRESAR AL SISTEMA</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════ VIEW: DASHBOARD (AYUDA) ══════ -->
+    <div id="view-ayuda-dash" class="view fu">
+      <h2 class="text-lg font-bold mb-5" style="font-family:'Space Grotesk',sans-serif">Dashboard de Uso</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+        <div class="bg-white rounded-2xl border p-6" style="border-color:var(--border)">
+          <div class="flex items-center justify-between mb-4">
+            <div><p class="text-xs uppercase tracking-widest font-semibold" style="color:var(--muted)">Documentos Procesados</p><p class="text-3xl font-bold mt-1" style="font-family:'Space Grotesk',sans-serif;color:var(--blue)">47 <span class="text-base font-normal" style="color:var(--muted)">/ 100</span></p></div>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-5 h-5" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+          </div>
+          <div class="grid grid-cols-3 gap-3 text-center mb-3">
+            <div class="rounded-lg p-2" style="background:var(--blueSoft)"><p class="text-lg font-bold" style="color:var(--blue)">100</p><p class="text-xs" style="color:var(--muted)">Total permitido</p></div>
+            <div class="rounded-lg p-2" style="background:#ECFDF5"><p class="text-lg font-bold text-green-600">47</p><p class="text-xs" style="color:var(--muted)">Procesados</p></div>
+            <div class="rounded-lg p-2" style="background:#FFF7ED"><p class="text-lg font-bold text-orange-500">53</p><p class="text-xs" style="color:var(--muted)">Restantes</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div><label class="f-label">Desde</label><input class="filter-input w-full" type="date"/></div>
+            <div><label class="f-label">Hasta</label><input class="filter-input w-full" type="date"/></div>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border p-6" style="border-color:var(--border)">
+          <div class="flex items-center justify-between mb-4">
+            <div><p class="text-xs uppercase tracking-widest font-semibold" style="color:var(--muted)">Consultas IA</p><p class="text-3xl font-bold mt-1" style="font-family:'Space Grotesk',sans-serif;color:var(--blue)">152 <span class="text-base font-normal" style="color:var(--muted)">/ 200</span></p></div>
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-5 h-5" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-3 3v-3z"/></svg></div>
+          </div>
+          <div class="grid grid-cols-3 gap-3 text-center mb-3">
+            <div class="rounded-lg p-2" style="background:var(--blueSoft)"><p class="text-lg font-bold" style="color:var(--blue)">200</p><p class="text-xs" style="color:var(--muted)">Total permitido</p></div>
+            <div class="rounded-lg p-2" style="background:#ECFDF5"><p class="text-lg font-bold text-green-600">152</p><p class="text-xs" style="color:var(--muted)">Realizadas</p></div>
+            <div class="rounded-lg p-2 bg-orange-50"><p class="text-lg font-bold text-orange-500">48</p><p class="text-xs" style="color:var(--muted)">Restantes</p></div>
+          </div>
+          <div class="flex gap-3">
+            <div><label class="f-label">Desde</label><input class="filter-input w-full" type="date"/></div>
+            <div><label class="f-label">Hasta</label><input class="filter-input w-full" type="date"/></div>
+          </div>
+        </div>
+      </div>
+      <button class="btn-blue text-sm">Actualizar período</button>
+    </div>
+
+    <!-- ══════ VIEW: FAQ ══════ -->
+    <div id="view-faq" class="view fu">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-lg font-bold" style="font-family:'Space Grotesk',sans-serif">Preguntas Frecuentes</h2>
+        <button class="btn-blue" onclick="openModal('modal-new-faq')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg> Nueva Pregunta</button>
+      </div>
+      <div class="space-y-3" id="faqAdmin">
+        <div class="bg-white rounded-2xl border p-4 flex items-start justify-between gap-4" style="border-color:var(--border)">
+          <div class="flex-1"><p class="font-semibold text-sm mb-1">¿Cómo proceso un documento con la IA?</p><p class="text-xs" style="color:var(--muted)">Ve a "Listado de documentos", selecciona el documento en estado "Cargado" y presiona "Procesar"...</p></div>
+          <div class="flex gap-2 flex-shrink-0">
+            <button class="btn-icon btn-edit" title="Editar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button>
+            <button class="btn-icon btn-del" title="Eliminar"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl border p-4 flex items-start justify-between gap-4" style="border-color:var(--border)">
+          <div class="flex-1"><p class="font-semibold text-sm mb-1">¿Cuántas consultas puedo realizar?</p><p class="text-xs" style="color:var(--muted)">El límite anual depende de tu plan contratado. Puedes ver el estado actual en "Ayuda"...</p></div>
+          <div class="flex gap-2 flex-shrink-0">
+            <button class="btn-icon btn-edit"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></button>
+            <button class="btn-icon btn-del"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /views container -->
+</div>
+</div><!-- /main -->
+
+<!-- ══════════════════════════════════════
+     MODALS
+══════════════════════════════════════ -->
+
+<!-- New User Modal -->
+<div id="modal-new-user" class="modal-bg">
+  <div class="modal">
+    <div class="modal-title">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div>
+      Nuevo Usuario
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="col-span-2"><label class="f-label">Foto</label><input type="file" accept="image/*" class="f-input"/></div>
+      <div><label class="f-label">Username *</label><input class="f-input" type="text" maxlength="50" placeholder="jperez"/></div>
+      <div><label class="f-label">Email *</label><input class="f-input" type="email" maxlength="50" placeholder="j@epson.com"/></div>
+      <div><label class="f-label">Nombres *</label><input class="f-input" type="text" maxlength="50"/></div>
+      <div><label class="f-label">Apellidos *</label><input class="f-input" type="text" maxlength="50"/></div>
+      <div><label class="f-label">Celular</label><input class="f-input" type="text" maxlength="15"/></div>
+      <div><label class="f-label">Contraseña *</label><input class="f-input" type="password" maxlength="25"/></div>
+      <div class="col-span-2"><label class="f-label">Repite Contraseña *</label><input class="f-input" type="password" maxlength="25"/></div>
+      <div class="col-span-2"><label class="f-label">Notaría *</label><select class="f-input"><option value="">Seleccionar notaría...</option><option>Notaría Central</option><option>Notaría Norte</option></select></div>
+      <div class="col-span-2">
+        <label class="f-label">Roles *</label>
+        <div class="border rounded-xl overflow-hidden" style="border-color:var(--border)">
+          <div class="px-4 py-2 flex items-center justify-between" style="background:var(--blueSoft);border-bottom:1px solid var(--border)">
+            <span class="text-xs font-semibold" style="color:var(--blue)">Selecciona uno o más roles</span>
+            <span id="new-user-roles-count" class="text-xs" style="color:var(--muted)">0 seleccionados</span>
+          </div>
+          <div class="divide-y" style="border-color:var(--border)">
+            <label class="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-blue-50 transition-colors new-user-rol-row">
+              <input type="checkbox" class="new-user-rol-chk" onchange="updateRolCount('new-user-rol-chk','new-user-roles-count')"/>
+              <div><p class="text-sm font-semibold" style="color:var(--text)">Administrador</p><p class="text-xs" style="color:var(--muted)">Acceso total al sistema</p></div>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-blue-50 transition-colors new-user-rol-row">
+              <input type="checkbox" class="new-user-rol-chk" onchange="updateRolCount('new-user-rol-chk','new-user-roles-count')"/>
+              <div><p class="text-sm font-semibold" style="color:var(--text)">Operador</p><p class="text-xs" style="color:var(--muted)">Gestión de documentos</p></div>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-blue-50 transition-colors new-user-rol-row">
+              <input type="checkbox" class="new-user-rol-chk" onchange="updateRolCount('new-user-rol-chk','new-user-roles-count')"/>
+              <div><p class="text-sm font-semibold" style="color:var(--text)">Visor</p><p class="text-xs" style="color:var(--muted)">Solo lectura</p></div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-3 mt-5">
+      <button class="btn-secondary" onclick="closeModal('modal-new-user')">Cancelar</button>
+      <button class="btn-blue" onclick="toast('Usuario creado correctamente');closeModal('modal-new-user')">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit User Modal -->
+<div id="modal-edit-user" class="modal-bg">
+  <div class="modal">
+    <div class="modal-title"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div>Editar Usuario</div>
+    <div class="grid grid-cols-2 gap-4">
+      <div><label class="f-label">Username</label><input class="f-input" type="text" value="jperez" disabled style="background:#f8faff;color:var(--muted)"/></div>
+      <div><label class="f-label">Estado</label><select class="f-input"><option>Activo</option><option>Inactivo</option></select></div>
+      <div><label class="f-label">Nombres *</label><input class="f-input" type="text" value="Juan"/></div>
+      <div><label class="f-label">Apellidos *</label><input class="f-input" type="text" value="Pérez García"/></div>
+      <div class="col-span-2"><label class="f-label">Email *</label><input class="f-input" type="email" value="jperez@epson.com"/></div>
+      <div><label class="f-label">Notaría *</label><select class="f-input"><option>Notaría Central</option><option>Notaría Norte</option></select></div>
+      <div class="col-span-2">
+        <label class="f-label">Roles *</label>
+        <div class="border rounded-xl overflow-hidden" style="border-color:var(--border)">
+          <div class="px-4 py-2 flex items-center justify-between" style="background:var(--blueSoft);border-bottom:1px solid var(--border)">
+            <span class="text-xs font-semibold" style="color:var(--blue)">Selecciona uno o más roles</span>
+            <span id="edit-user-roles-count" class="text-xs" style="color:var(--muted)">1 seleccionado</span>
+          </div>
+          <div class="divide-y" style="border-color:var(--border)">
+            <label class="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-blue-50 transition-colors">
+              <input type="checkbox" class="edit-user-rol-chk" checked onchange="updateRolCount('edit-user-rol-chk','edit-user-roles-count')"/>
+              <div><p class="text-sm font-semibold" style="color:var(--text)">Administrador</p><p class="text-xs" style="color:var(--muted)">Acceso total al sistema</p></div>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-blue-50 transition-colors">
+              <input type="checkbox" class="edit-user-rol-chk" onchange="updateRolCount('edit-user-rol-chk','edit-user-roles-count')"/>
+              <div><p class="text-sm font-semibold" style="color:var(--text)">Operador</p><p class="text-xs" style="color:var(--muted)">Gestión de documentos</p></div>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-2.5 cursor-pointer hover:bg-blue-50 transition-colors">
+              <input type="checkbox" class="edit-user-rol-chk" onchange="updateRolCount('edit-user-rol-chk','edit-user-roles-count')"/>
+              <div><p class="text-sm font-semibold" style="color:var(--text)">Visor</p><p class="text-xs" style="color:var(--muted)">Solo lectura</p></div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-3 mt-5">
+      <button class="btn-secondary" onclick="closeModal('modal-edit-user')">Cancelar</button>
+      <button class="btn-blue" onclick="toast('Usuario actualizado');closeModal('modal-edit-user')">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Change Password Modal -->
+<div id="modal-change-pass" class="modal-bg">
+  <div class="modal">
+    <div class="modal-title"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg></div>Cambiar Contraseña</div>
+    <div class="space-y-4">
+      <div class="p-3 rounded-xl text-sm" style="background:var(--blueSoft)"><span class="font-semibold">Usuario:</span> jperez · <span class="font-semibold">Nombre:</span> Juan Pérez García</div>
+      <div><label class="f-label">Nueva contraseña * (mín. 6 dígitos)</label><input class="f-input" type="password" maxlength="25" placeholder="••••••••"/></div>
+      <div><label class="f-label">Repite contraseña *</label><input class="f-input" type="password" maxlength="25" placeholder="••••••••"/></div>
+    </div>
+    <div class="flex justify-end gap-3 mt-5">
+      <button class="btn-secondary" onclick="closeModal('modal-change-pass')">Cancelar</button>
+      <button class="btn-blue" onclick="toast('Contraseña actualizada');closeModal('modal-change-pass')">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- New Role Modal -->
+<div id="modal-new-role" class="modal-bg">
+  <div class="modal">
+    <div class="modal-title"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>Nuevo Rol</div>
+    <div class="space-y-4">
+      <div><label class="f-label">Notaría *</label><select class="f-input"><option>Seleccionar notaría...</option><option>Notaría Central</option><option>Notaría Norte</option></select></div>
+      <div><label class="f-label">Aplicativo *</label><select class="f-input"><option>Seleccionar aplicativo...</option><option>EPSON.IA</option></select></div>
+      <div><label class="f-label">Nombre del rol *</label><input class="f-input" type="text" maxlength="50" placeholder="Ej: Supervisor"/></div>
+      <div><label class="f-label">Descripción</label><textarea class="f-input" rows="2" maxlength="500" style="resize:none"></textarea></div>
+      <div>
+        <p class="f-label mb-2">Permisos</p>
+        <div class="border rounded-xl overflow-hidden" style="border-color:var(--border)">
+          <table class="data-table">
+            <thead><tr><th>Módulo</th><th>Menú</th><th>Acción</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Seguridad</td>
+                <td>Usuarios</td>
+                <td>
+                  <label class="flex items-center gap-2 text-xs mb-1"><input type="checkbox"/> Agregar usuario</label>
+                  <label class="flex items-center gap-2 text-xs mb-1"><input type="checkbox"/> Actualizar usuario</label>
+                  <label class="flex items-center gap-2 text-xs"><input type="checkbox"/> Restablecer contraseña</label>
+                </td>
+              </tr>
+              <tr>
+                <td>Seguridad</td>
+                <td>Roles</td>
+                <td>
+                  <label class="flex items-center gap-2 text-xs mb-1"><input type="checkbox"/> Agregar rol</label>
+                  <label class="flex items-center gap-2 text-xs"><input type="checkbox"/> Actualizar rol</label>
+                </td>
+              </tr>
+              <tr>
+                <td>Documentos</td>
+                <td>Mis Documentos</td>
+                <td>
+                  <label class="flex items-center gap-2 text-xs mb-1"><input type="checkbox"/> Ver documentos</label>
+                  <label class="flex items-center gap-2 text-xs mb-1"><input type="checkbox"/> Cargar documento</label>
+                  <label class="flex items-center gap-2 text-xs"><input type="checkbox"/> Eliminar documento</label>
+                </td>
+              </tr>
+              <tr>
+                <td>IA</td>
+                <td>Consulta IA</td>
+                <td>
+                  <label class="flex items-center gap-2 text-xs mb-1"><input type="checkbox"/> Consultar</label>
+                  <label class="flex items-center gap-2 text-xs"><input type="checkbox"/> Ver historial</label>
+                </td>
+              </tr>
+              <tr>
+                <td>Plantillas</td>
+                <td>Gestión de Plantillas</td>
+                <td>
+                  <label class="flex items-center gap-2 text-xs mb-1"><input type="checkbox"/> Agregar plantilla</label>
+                  <label class="flex items-center gap-2 text-xs mb-1"><input type="checkbox"/> Actualizar plantilla</label>
+                  <label class="flex items-center gap-2 text-xs"><input type="checkbox"/> Eliminar plantilla</label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-3 mt-5">
+      <button class="btn-secondary" onclick="closeModal('modal-new-role')">Cancelar</button>
+      <button class="btn-blue" onclick="toast('Rol guardado');closeModal('modal-new-role')">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- New Notaria Modal -->
+<div id="modal-new-notaria" class="modal-bg">
+  <div class="modal">
+    <div class="modal-title"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1"/></svg></div>Nueva Notaría</div>
+    <div class="grid grid-cols-2 gap-4">
+      <div class="col-span-2"><label class="f-label">Logo</label><input type="file" accept="image/*" class="f-input"/></div>
+      <div class="col-span-2"><label class="f-label">Razón Social *</label><input class="f-input" maxlength="50"/></div>
+      <div><label class="f-label">RUC * (11 dígitos)</label><input class="f-input" maxlength="11" type="text"/></div>
+      <div><label class="f-label">Email *</label><input class="f-input" type="email" maxlength="50"/></div>
+      <div><label class="f-label">Distrito Judicial *</label><input class="f-input" maxlength="50"/></div>
+      <div><label class="f-label">Celular</label><input class="f-input" maxlength="15"/></div>
+      <div class="col-span-2"><label class="f-label">Dirección *</label><input class="f-input" maxlength="250"/></div>
+    </div>
+    <div class="flex justify-end gap-3 mt-5">
+      <button class="btn-secondary" onclick="closeModal('modal-new-notaria')">Cancelar</button>
+      <button class="btn-blue" onclick="toast('Notaría registrada');closeModal('modal-new-notaria')">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Aplicativo (Nuevo / Editar) -->
+<div id="modal-aplicativo" class="modal-bg">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-title">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft)">
+        <svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+      </div>
+      Nuevo / Editar Aplicativo
+    </div>
+    <div class="space-y-4">
+      <div class="grid grid-cols-2 gap-4">
+        <div class="col-span-2"><label class="f-label">Nombre *</label><input class="f-input" maxlength="50" placeholder="Ej: Consulta IA"/></div>
+        <div class="col-span-2"><label class="f-label">Descripción</label><textarea class="f-input" rows="2" maxlength="500" style="resize:none" placeholder="Breve descripción del aplicativo..."></textarea></div>
+        <div><label class="f-label">URL *</label><input class="f-input" type="url" placeholder="https://"/></div>
+        <div><label class="f-label">Estado</label><select class="f-input"><option>Activo</option><option>Inactivo</option></select></div>
+        <div class="col-span-2"><label class="f-label">Ícono</label><input type="file" accept="image/*" class="f-input"/></div>
+      </div>
+      <!-- Asignación de Notarías -->
+      <div>
+        <p class="f-label mb-2">Asignación de Notarías *</p>
+        <div class="border rounded-xl overflow-hidden" style="border-color:var(--border)">
+          <div class="px-4 py-2.5 flex items-center justify-between" style="background:var(--blueSoft);border-bottom:1px solid var(--border)">
+            <span class="text-xs font-semibold" style="color:var(--blue)">Selecciona las notarías que tendrán acceso a este aplicativo</span>
+            <label class="flex items-center gap-2 text-xs cursor-pointer" style="color:var(--muted)">
+              <input type="checkbox" id="chk-all-notarias" onchange="toggleAllNotarias(this)"/> Seleccionar todas
+            </label>
+          </div>
+          <div class="divide-y" style="border-color:var(--border)">
+            <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-blue-50 transition-colors notaria-row">
+              <input type="checkbox" class="notaria-chk" value="Notaría Central"/>
+              <div>
+                <p class="text-sm font-semibold" style="color:var(--text)">Notaría Central SAC</p>
+                <p class="text-xs" style="color:var(--muted)">RUC: 20512345678 · Lima</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-blue-50 transition-colors notaria-row">
+              <input type="checkbox" class="notaria-chk" value="Notaría Norte"/>
+              <div>
+                <p class="text-sm font-semibold" style="color:var(--text)">Notaría Norte EIRL</p>
+                <p class="text-xs" style="color:var(--muted)">RUC: 20598765432 · SMP</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-blue-50 transition-colors notaria-row">
+              <input type="checkbox" class="notaria-chk" value="Notaría Sur"/>
+              <div>
+                <p class="text-sm font-semibold" style="color:var(--text)">Notaría Sur S.A.C.</p>
+                <p class="text-xs" style="color:var(--muted)">RUC: 20534211890 · Surco</p>
+              </div>
+            </label>
+          </div>
+          <div class="px-4 py-2 text-xs" style="color:var(--muted);border-top:1px solid var(--border)">
+            <span id="notarias-count">0 notarías seleccionadas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-3 mt-5">
+      <button class="btn-secondary" onclick="closeModal('modal-aplicativo')">Cancelar</button>
+      <button class="btn-blue" onclick="toast('Aplicativo guardado correctamente');closeModal('modal-aplicativo')">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- New Template Modal -->
+<div id="modal-new-template" class="modal-bg">
+  <div class="modal" style="max-width:600px">
+    <div class="modal-title"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>Nueva Plantilla</div>
+    <div class="grid grid-cols-2 gap-4">
+      <div><label class="f-label">Notaría *</label><select class="f-input"><option>Seleccionar...</option><option>Notaría Central</option></select></div>
+      <div><label class="f-label">Tipo</label><select class="f-input"><option>Contrato</option><option>Carta</option><option>Declaración</option><option>Poder</option></select></div>
+      <div class="col-span-2"><label class="f-label">Nombre *</label><input class="f-input" maxlength="50" placeholder="Nombre de la plantilla"/></div>
+      <div class="col-span-2"><label class="f-label">Contexto * (máx. 5000 chars)</label><textarea class="f-input" rows="3" maxlength="5000" style="resize:none" placeholder="Descripción detallada del contexto de uso..."></textarea></div>
+      <div class="col-span-2"><label class="f-label">Etiquetas *</label><input class="f-input" placeholder="Ej: servicios, legal, 2025 (separar con coma)"/></div>
+      <div class="col-span-2">
+        <label class="f-label">Cargar plantilla (Word .docx) *</label>
+        <div class="banner-upload" onclick="document.getElementById('templateFile').click()" id="templateDropZone">
+          <input type="file" id="templateFile" accept=".docx,.doc,.pdf" class="hidden" onchange="handleTemplateUpload(this)"/>
+          <svg class="w-8 h-8 mx-auto mb-2" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+          <p class="text-sm font-semibold" style="color:var(--blue)">Haz clic para subir o arrastra aquí</p>
+          <p class="text-xs mt-1" style="color:var(--muted)">Soporta .docx, .doc, .pdf · Máx. 20MB</p>
+        </div>
+        <div id="templateFileInfo" class="hidden mt-2 p-3 rounded-xl text-sm flex items-center gap-3" style="background:var(--blueSoft)">
+          <svg class="w-5 h-5 flex-shrink-0" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span id="templateFileName" style="color:var(--blue)"></span>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-end gap-3 mt-5">
+      <button class="btn-secondary" onclick="closeModal('modal-new-template')">Cancelar</button>
+      <button class="btn-blue" onclick="saveTemplate()">Guardar Plantilla</button>
+    </div>
+  </div>
+</div>
+
+<!-- New FAQ Modal -->
+<div id="modal-new-faq" class="modal-bg">
+  <div class="modal">
+    <div class="modal-title"><div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background:var(--blueSoft)"><svg class="w-4 h-4" style="color:var(--blue)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>Nueva Pregunta Frecuente</div>
+    <div class="space-y-4">
+      <div><label class="f-label">Pregunta *</label><input class="f-input" type="text" placeholder="¿Cómo...?"/></div>
+      <div><label class="f-label">Respuesta *</label><textarea class="f-input" rows="4" style="resize:none" placeholder="Respuesta detallada..."></textarea></div>
+    </div>
+    <div class="flex justify-end gap-3 mt-5">
+      <button class="btn-secondary" onclick="closeModal('modal-new-faq')">Cancelar</button>
+      <button class="btn-blue" onclick="toast('Pregunta agregada');closeModal('modal-new-faq')">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast"></div>
+
+<script>
+// ─── Sidebar ────────────────────────────────────────
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('expanded');
+}
+
+// ─── Views ──────────────────────────────────────────
+const viewTitles={
+  'usuarios':'Seguridad › Usuarios','roles':'Seguridad › Roles',
+  'notarias':'Mantenimiento › Notarías','aplicativos':'Mantenimiento › Aplicativos',
+  'plantillas':'Mantenimiento › Gestión de Plantillas',
+  'login-config':'Personalización › Login',
+  'ayuda-dash':'Ayuda › Dashboard','faq':'Ayuda › Preguntas Frecuentes'
+};
+
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const el=document.getElementById('view-'+name);
+  if(el){el.classList.add('active');el.classList.remove('fu');void el.offsetWidth;el.classList.add('fu')}
+  document.querySelectorAll('.nav-btn-sb').forEach(b=>b.classList.remove('nav-active'));
+  const nb=document.getElementById('nav-'+name);
+  if(nb) nb.classList.add('nav-active');
+  document.getElementById('page-title').textContent=viewTitles[name]||name;
+}
+
+// ─── Dropdown ────────────────────────────────────────
+function toggleDropdown(){
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+document.addEventListener('click',e=>{if(!e.target.closest('.relative')) document.getElementById('user-dropdown').classList.remove('open')});
+
+// ─── Modals ──────────────────────────────────────────
+function openModal(id){document.getElementById(id).classList.add('open')}
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+document.querySelectorAll('.modal-bg').forEach(bg=>{
+  bg.addEventListener('click',e=>{if(e.target===bg) bg.classList.remove('open')});
+});
+
+// ─── Toast ───────────────────────────────────────────
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// ─── Login Config ────────────────────────────────────
+let loginConfig = {title:'',subtitle:'',logoPosition:'center',banners:[]};
+
+try{
+  const saved = JSON.parse(localStorage.getItem('epson_login_config')||'{}');
+  Object.assign(loginConfig,saved);
+  if(loginConfig.title) document.getElementById('loginTitleInput').value=loginConfig.title;
+  if(loginConfig.subtitle) document.getElementById('loginSubtitleInput').value=loginConfig.subtitle;
+  if(loginConfig.logoPosition) setLogoPos(loginConfig.logoPosition);
+} catch(e){}
+
+function updatePreview(){
+  const title=document.getElementById('loginTitleInput').value||'Gestión Documental';
+  const subtitle=document.getElementById('loginSubtitleInput').value||'Plataforma integral EPSON para el procesamiento y consulta de documentos.';
+  const t=document.getElementById('previewTitle');const s=document.getElementById('previewSubtitle');
+  if(t) t.textContent=title;
+  if(s) s.textContent=subtitle;
+}
+
+function setLogoPos(pos){
+  loginConfig.logoPosition=pos;
+  document.querySelectorAll('.pos-btn').forEach(b=>b.classList.remove('on'));
+  const posMap={'top-left':0,'center':1,'top-right':2,'center-left':3,'center-right':4,'bottom-left':5,'bottom-center':6,'bottom-right':7};
+  const btns=document.querySelectorAll('.pos-btn');
+  const idx=posMap[pos];
+  if(btns[idx!==undefined?idx:1]) btns[idx!==undefined?idx:1].classList.add('on');
+  const pc=document.getElementById('previewContent');
+  if(!pc) return;
+  const jMap={'top-left':'flex-start','center':'center','top-right':'flex-end','center-left':'flex-start','center-right':'flex-end','bottom-left':'flex-start','bottom-center':'center','bottom-right':'flex-end'};
+  const aMap={'top-left':'flex-start','center':'center','top-right':'flex-start','center-left':'center','center-right':'center','bottom-left':'flex-end','bottom-center':'flex-end','bottom-right':'flex-end'};
+  pc.style.justifyContent=jMap[pos]||'center';
+  pc.style.alignItems=aMap[pos]||'center';
+  pc.style.textAlign=['center-left','top-left','bottom-left'].includes(pos)?'left':['center-right','top-right','bottom-right'].includes(pos)?'right':'center';
+}
+
+function loadBanner(n,input){
+  if(!input.files[0]) return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    loginConfig.banners[n-1]=e.target.result;
+    const prev=document.getElementById(`banner${n}-preview`);
+    if(prev){prev.style.backgroundImage=`url('${e.target.result}')`;prev.style.backgroundSize='cover';prev.style.backgroundPosition='center';prev.innerHTML='';}
+    // Update preview bg
+    const pbg=document.getElementById('preview-banner-bg');
+    if(pbg) pbg.style.backgroundImage=`url('${e.target.result}')`;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function saveLoginConfig(){
+  loginConfig.title=document.getElementById('loginTitleInput').value;
+  loginConfig.subtitle=document.getElementById('loginSubtitleInput').value;
+  localStorage.setItem('epson_login_config',JSON.stringify(loginConfig));
+  toast('✓ Configuración de login guardada correctamente');
+}
+
+function resetLoginConfig(){
+  loginConfig={title:'',subtitle:'',logoPosition:'center',banners:[]};
+  localStorage.removeItem('epson_login_config');
+  document.getElementById('loginTitleInput').value='';
+  document.getElementById('loginSubtitleInput').value='';
+  setLogoPos('center');
+  updatePreview();
+  toast('Configuración restablecida');
+}
+
+// ─── Template Upload ──────────────────────────────────
+function handleTemplateUpload(input){
+  if(!input.files[0]) return;
+  const name=input.files[0].name;
+  document.getElementById('templateFileName').textContent=name;
+  document.getElementById('templateFileInfo').classList.remove('hidden');
+  document.getElementById('templateDropZone').style.borderColor='var(--blue)';
+  document.getElementById('templateDropZone').style.background='var(--blueSoft)';
+}
+
+function saveTemplate(){
+  const file=document.getElementById('templateFile').files[0];
+  if(!file){toast('⚠ Debes cargar una plantilla Word');return}
+  toast('✓ Plantilla guardada exitosamente');
+  closeModal('modal-new-template');
+}
+
+// ─── Rol checkbox counter ─────────────────────────────
+function updateRolCount(chkClass, countId){
+  const total = document.querySelectorAll('.'+chkClass+':checked').length;
+  const el = document.getElementById(countId);
+  if(el) el.textContent = total + ' seleccionado' + (total===1?'':'s');
+}
+
+// ─── Notarias checkbox counter ───────────────────────
+function toggleAllNotarias(masterChk){
+  document.querySelectorAll('.notaria-chk').forEach(c=>c.checked=masterChk.checked);
+  updateNotariasCount();
+}
+document.addEventListener('change',function(e){
+  if(e.target.classList.contains('notaria-chk')) updateNotariasCount();
+});
+function updateNotariasCount(){
+  const total=document.querySelectorAll('.notaria-chk:checked').length;
+  const el=document.getElementById('notarias-count');
+  if(el) el.textContent=total+' notaría'+(total===1?'':'s')+' seleccionada'+(total===1?'':'s');
+  const master=document.getElementById('chk-all-notarias');
+  if(master) master.checked=(total===document.querySelectorAll('.notaria-chk').length);
+}
+
+// Init with expanded sidebar
+document.getElementById('sidebar').classList.add('expanded');
+</script>
+</body>
+</html>
