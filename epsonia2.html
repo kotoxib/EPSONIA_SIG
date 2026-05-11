@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EPSON.IA · Gestión Documental</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="epsonia2.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+     SCREEN 1 — HOME
+═══════════════════════════════ -->
+<div id="s-home" class="screen on">
+  <nav class="navbar">
+    <div class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="20" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="3" rx="1" fill="white"/><rect x="3" y="10.5" width="14" height="3" rx="1" fill="white"/><rect x="3" y="18" width="10" height="3" rx="1" fill="white"/></svg>
+      </div>
+      <img src="img/epso2.png" alt="Epsonia IA" style="height:50px;display:block;">
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <button class="nav-btn">
+        <svg width="18" height="12" viewBox="0 0 18 12"><rect width="6" height="12" fill="#D91023"/><rect x="6" width="6" height="12" fill="#fff"/><rect x="12" width="6" height="12" fill="#D91023"/></svg>
+        Perú
+      </button>
+      <div style="position:relative">
+        <div class="nav-user-chip" onclick="toggleDropdown('user-menu-home')" style="cursor:pointer">
+          <div class="nav-avatar">AD</div>
+          <span style="font-size:13px;font-weight:600;color:var(--text)">Administrador</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:2px"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div id="user-menu-home" class="dropdown-menu" style="display:none">
+          <div class="dd-item" onclick="show('s-plantillas')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Gestionar Plantillas
+          </div>
+          <div class="dd-item" onclick="window.location.href='configuracion3.html'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Configuración
+          </div>
+          <div style="height:1px;background:var(--border);margin:3px 8px"></div>
+          <div class="dd-item danger" onclick="handleLogout()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Cerrar sesión
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div style="flex:1;position:relative;overflow:hidden">
+    <div class="banner-slider">
+      <img class="banner active" src="img/Banner3_1.png" alt=""/>
+      <img class="banner" src="img/Banner3_2.png" alt=""/>
+      <img class="banner" src="img/Banner3_3.png" alt=""/>
+    </div>
+    <div class="banner-overlay"></div>
+    <div class="home-content">
+      <p class="fu home-eyebrow">EPSON · Gestión Documental IA</p>
+      <h2 class="fu2 home-title">Selecciona una opción</h2>
+      <div class="mod-grid-wrap">
+        <!-- Fila 1: 3 módulos -->
+        <div class="mod-row3">
+          <div class="mod fu" onclick="gos('tab-ia')">
+            <div class="ibox"><svg width="36" height="36" viewBox="0 0 30 30" fill="none"><rect x="3" y="3" width="24" height="24" rx="5" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><text x="50%" y="57%" dominant-baseline="middle" text-anchor="middle" font-size="10" font-weight="800" fill="var(--blue)" font-family="Outfit,sans-serif">AI</text></svg></div>
+            <span class="mod-lbl">Consulta<br>IA</span>
+          </div>
+          <div class="mod fu2" onclick="gos('tab-guardados')">
+            <div class="ibox"><svg width="34" height="34" viewBox="0 0 30 30" fill="none"><rect x="4" y="2" width="18" height="24" rx="3" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><path d="M8 2v10l4-3 4 3V2" fill="rgba(16,33,139,.15)" stroke="var(--blue)" stroke-width="1.5"/></svg></div>
+            <span class="mod-lbl">Mis<br>Documentos</span>
+          </div>
+          <div class="mod fu3" onclick="show('s-gendoc')">
+            <div class="ibox"><svg width="34" height="34" viewBox="0 0 30 30" fill="none"><rect x="4" y="2" width="18" height="24" rx="3" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><line x1="8" y1="10" x2="18" y2="10" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="14" x2="18" y2="14" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="18" x2="13" y2="18" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="22" r="5" fill="var(--blue)"/><line x1="20" y1="19.5" x2="20" y2="24.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><line x1="17.5" y1="22" x2="22.5" y2="22" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <span class="mod-lbl">Generación de<br>Documentos</span>
+          </div>
+        </div>
+        <!-- Fila 2: 2 módulos centrados -->
+        <div class="mod-row2">
+          <div class="mod fu" onclick="gos('tab-listado')">
+            <div class="ibox"><svg width="34" height="34" viewBox="0 0 30 30" fill="none"><rect x="3" y="3" width="24" height="24" rx="4" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><line x1="8" y1="10" x2="22" y2="10" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="15" x2="22" y2="15" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="20" x2="16" y2="20" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <span class="mod-lbl">Listado de<br>Documentos</span>
+          </div>
+          <div class="mod fu2" onclick="gos('tab-ayuda')">
+            <div class="ibox"><svg width="34" height="34" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><path d="M11 11.5c0-2.5 8-2.5 8 0 0 2.5-4 3-4 5.5" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="15" cy="21" r="1.2" fill="var(--blue)"/></svg></div>
+            <span class="mod-lbl">Ayuda</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /s-home -->
+
+<!-- ═══════════════════════════════
+     SCREEN 2 — APP TABS
+═══════════════════════════════ -->
+<div id="s-app" class="screen" style="background:var(--bg)">
+  <nav class="navbar">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="3" rx="1" fill="white"/><rect x="3" y="10.5" width="14" height="3" rx="1" fill="white"/><rect x="3" y="18" width="10" height="3" rx="1" fill="white"/></svg></div>
+      EPSON<span style="color:var(--blueAcc)">.IA</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <button class="nav-btn" onclick="goHome()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        Inicio
+      </button>
+      <div style="position:relative">
+        <div class="nav-user-chip" onclick="toggleDropdown('user-menu-app')" style="cursor:pointer">
+          <div class="nav-avatar">AD</div>
+          <span style="font-size:13px;font-weight:600;color:var(--text)">Administrador</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:2px"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div id="user-menu-app" class="dropdown-menu" style="display:none">
+          <div class="dd-item" onclick="show('s-plantillas')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Gestionar Plantillas
+          </div>
+          <div class="dd-item" onclick="window.location.href='configuracion3.html'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+            Configuración
+          </div>
+          <div style="height:1px;background:var(--border);margin:3px 8px"></div>
+          <div class="dd-item danger" onclick="handleLogout()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Cerrar sesión
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div style="background:#fff;border-bottom:1.5px solid var(--border);padding:8px 28px;display:flex;gap:4px;overflow-x:auto;flex-shrink:0">
+    <div class="ntab on" id="btn-ia" onclick="switchTab('tab-ia',this)">Consulta IA</div>
+    <div class="ntab" id="btn-guardados" onclick="switchTab('tab-guardados',this)">Mis Documentos</div>
+    <div class="ntab" id="btn-listado" onclick="switchTab('tab-listado',this)">Listado Documentos</div>
+    <div class="ntab" id="btn-ayuda" onclick="switchTab('tab-ayuda',this)">Ayuda</div>
+  </div>
+
+  <!-- ── TAB: CONSULTA IA ── -->
+  <div id="tab-ia" class="tab-panel on" style="flex:1;padding:20px 28px;overflow:hidden">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div>
+        <h2 style="font-size:17px;font-weight:800;color:var(--text);font-family:'Outfit',sans-serif">Consulta IA</h2>
+        <p style="font-size:12px;color:var(--muted);margin-top:2px">Describe tu consulta y el sistema generará una respuesta basada en tus documentos</p>
+      </div>
+      <button style="background:var(--blueSoft);color:var(--blue);border:1.5px solid rgba(16,33,139,.2);border-radius:9px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;gap:7px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        Consultas guardadas
+      </button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:16px;flex:1">
+      <div class="card" style="padding:20px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:28px;height:28px;border-radius:8px;background:var(--blueSoft);display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+          <span style="font-size:14px;font-weight:700;color:var(--text)">Realizar consulta</span>
+        </div>
+        <div>
+          <label class="f-label">Descripción detallada</label>
+          <textarea id="ia-query" style="width:100%;height:180px;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13.5px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);resize:none;outline:none;transition:border .18s,box-shadow .18s;background:#fafbff;line-height:1.6"
+            onfocus="this.style.borderColor='var(--blue)';this.style.boxShadow='0 0 0 3px rgba(16,33,139,.1)'"
+            onblur="this.style.borderColor='var(--border)';this.style.boxShadow='none'"
+            placeholder="Ej: Busca los documentos del año 2024 y extrae las fechas de vencimiento..." oninput="document.getElementById('char-count').textContent=this.value.length+' caracteres'"></textarea>
+          <div style="text-align:right;font-size:11px;color:var(--textLight);margin-top:4px" id="char-count">0 caracteres</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12.5px;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:6px 10px"><input type="checkbox" checked style="accent-color:var(--blue)"/> Todos los docs</label>
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12.5px;color:var(--muted);background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:6px 10px"><input type="checkbox" style="accent-color:var(--blue)"/> Solo recientes</label>
+        </div>
+        <button class="gbtn" onclick="generar()"><span id="gbtn-txt">Generar respuesta</span></button>
+      </div>
+
+      <div class="card" style="padding:20px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div style="width:28px;height:28px;border-radius:8px;background:var(--blueSoft);display:flex;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg></div>
+            <span style="font-size:14px;font-weight:700;color:var(--text)">Resultados</span>
+          </div>
+          <div id="result-badge" style="display:none;background:#dcfce7;color:#16a34a;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;border:1px solid #bbf7d0">● Generado</div>
+        </div>
+        <div id="ia-empty" style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px">
+          <div style="width:52px;height:52px;border-radius:14px;background:var(--blueSoft);display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+          <p style="font-size:13.5px;font-weight:700;color:var(--muted)">Esperando consulta</p>
+          <p style="font-size:12px;color:var(--textLight);text-align:center">Escribe una consulta y presiona «Generar respuesta»</p>
+        </div>
+        <div id="ia-result" style="display:none;flex-direction:column;gap:12px">
+          <div class="result-box" id="ia-result-text"></div>
+          <div id="sources-row" style="display:flex;flex-wrap:wrap;gap:6px"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="gbtn" style="font-size:12px;padding:7px 14px" onclick="guardarConsultaIA()"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg> Guardar</button>
+            <button class="gbtn" style="font-size:12px;padding:7px 14px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Exportar</button>
+            <button onclick="clearResult()" style="background:none;border:1.5px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;cursor:pointer;color:var(--muted)">Limpiar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB: MIS DOCUMENTOS ── -->
+  <div id="tab-guardados" class="tab-panel tab-row" style="flex:1;gap:0;overflow:hidden">
+    <!-- Sidebar Organizar -->
+    <div style="width:180px;flex-shrink:0;background:#fff;border-right:1.5px solid var(--border);padding:16px 10px;display:flex;flex-direction:column;gap:3px">
+      <p style="font-size:10.5px;font-weight:700;color:var(--textLight);text-transform:uppercase;letter-spacing:.07em;padding:4px 12px 8px">Organizar</p>
+      <div id="pill-recientes" class="sdi on" onclick="setOrganizar('recientes',this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Recientes
+      </div>
+      <div id="pill-documentos" class="sdi" onclick="setOrganizar('documentos',this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        Documentos
+      </div>
+      <div id="pill-favoritos" class="sdi" onclick="setOrganizar('favoritos',this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+        Favoritos
+      </div>
+      <div id="pill-papelera" class="sdi" onclick="setOrganizar('papelera',this)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        Papelera
+      </div>
+    </div>
+    <!-- Main content -->
+    <div style="flex:1;padding:20px 28px;gap:16px;overflow-y:auto;display:flex;flex-direction:column">
+    <!-- Header row -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div>
+        <h2 style="font-size:17px;font-weight:800;color:var(--text);font-family:'Outfit',sans-serif" id="docs-title">Mis Documentos</h2>
+        <p style="font-size:12px;color:var(--muted);margin-top:2px" id="docs-subtitle">Vista de carpetas</p>
+      </div>
+      <div style="display:flex;gap:8px" id="docs-folder-actions">
+        <button class="obtn" style="font-size:12px;padding:7px 13px" onclick="openModal('modal-new-folder')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+          Nueva Carpeta
+        </button>
+      </div>
+    </div>
+
+    <!-- Search + Organizar bar -->
+    <div class="card" style="margin-bottom:14px;padding:14px 20px">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px;position:relative">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--textLight)" stroke-width="2" style="position:absolute;left:12px;top:50%;transform:translateY(-50%)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="docs-search" placeholder="Buscar documentos por nombre o descripción..." class="f-input" style="padding-left:2.2rem;margin-bottom:0" oninput="filterDocs()"/>
+        </div>
+        <input type="date" id="docs-date-from" class="f-input" style="width:150px;margin-bottom:0" onchange="filterDocs()"/>
+        <span style="font-size:12px;color:var(--muted)">—</span>
+        <input type="date" id="docs-date-to" class="f-input" style="width:150px;margin-bottom:0" onchange="filterDocs()"/>
+        <button class="gbtn" style="padding:9px 18px;font-size:13px" onclick="filterDocs()">Buscar</button>
+      </div>
+    </div>
+
+    <!-- Folder View -->
+    <div id="docs-folder-view">
+      <div class="card" style="overflow:hidden">
+        <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;gap:6px;align-items:center">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <span style="font-size:13px;font-weight:700;color:var(--text)">Carpetas</span>
+        </div>
+        <div style="padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px" id="folder-grid-docs"></div>
+      </div>
+    </div>
+
+    <!-- Document list inside folder -->
+    <div id="docs-list-view" style="display:none">
+      <div style="display:flex;align-items:center;gap:6px;margin-bottom:12px;flex-wrap:wrap">
+        <button class="salir-btn" style="padding:5px 12px;font-size:12px;display:flex;align-items:center;gap:5px" onclick="backToFolders()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Mis Documentos
+        </button>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span style="font-size:13px;font-weight:700;color:var(--text)" id="active-folder-name">Carpeta</span>
+        <div style="margin-left:auto;display:flex;gap:6px">
+          <button class="obtn" style="font-size:13px;padding:8px 18px;font-weight:600" onclick="openRenameDoc()">Renombrar</button>
+        </div>
+      </div>
+      <div class="card" style="overflow:hidden">
+        <div style="padding:10px 14px;display:grid;grid-template-columns:36px 1fr 1.2fr 100px 80px 100px 130px;gap:8px;border-bottom:2px solid var(--border);background:#f8faff;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;align-items:center">
+          <span style="display:flex;justify-content:center;align-items:center"><input type="checkbox" id="check-all-docs" onchange="toggleAllDocs(this)" style="accent-color:var(--blue)"/></span><span>Nombre</span><span>Descripción</span><span>Fecha</span><span style="text-align:center">Estado</span><span style="text-align:center">Privacidad</span><span style="text-align:center">Acciones</span>
+        </div>
+        <div id="folder-docs-tbody"></div>
+      </div>
+    </div>
+    </div><!-- /main content -->
+  </div><!-- /tab-guardados -->
+
+  <!-- ── TAB: LISTADO DOCUMENTOS ── -->
+  <div id="tab-listado" class="tab-panel" style="flex:1;padding:20px 28px;gap:16px;overflow-y:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div>
+        <h2 style="font-size:17px;font-weight:800;color:var(--text);font-family:'Outfit',sans-serif">Listado de Documentos</h2>
+        <p style="font-size:12px;color:var(--muted);margin-top:2px">Gestiona todos los documentos cargados en el sistema</p>
+      </div>
+      <button class="gbtn" style="padding:9px 18px;font-size:13px" onclick="openUploadModal()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Subir documento
+      </button>
+    </div>
+    <div class="card" style="margin-bottom:16px;padding:14px 20px">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px;position:relative">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--textLight)" stroke-width="2" style="position:absolute;left:12px;top:50%;transform:translateY(-50%)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="listado-search" placeholder="Buscar documento..." class="f-input" style="padding-left:2.2rem;margin-bottom:0" oninput="filterListado()"/>
+        </div>
+        <input type="date" id="listado-date-from" class="f-input" style="width:150px;margin-bottom:0" onchange="filterListado()"/>
+        <span style="font-size:12px;color:var(--muted)">—</span>
+        <input type="date" id="listado-date-to" class="f-input" style="width:150px;margin-bottom:0" onchange="filterListado()"/>
+        <select id="listado-estado-filter" class="f-input" style="width:150px;margin-bottom:0" onchange="filterListado()"><option value="">Todos los estados</option><option value="proc">Procesado</option><option value="carg">Cargado</option></select>
+        <button class="gbtn" style="padding:10px 18px;font-size:13px" onclick="filterListado()">Filtrar</button>
+      </div>
+    </div>
+    <div class="card" style="overflow:hidden">
+      <div style="padding:14px 20px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:14px;font-weight:700;color:var(--text)">Documentos cargados</span>
+        <span style="font-size:12px;color:var(--muted)" id="listado-count">1–5 de 5</span>
+      </div>
+      <div style="padding:0 8px">
+        <div style="padding:10px 14px 8px;display:flex;justify-content:flex-end">
+          <button class="gbtn" onclick="abrirModalProcesar()" style="display:inline-flex;align-items:center;gap:7px;padding:9px 18px;font-size:13px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg> Procesar Seleccionados</button>
+        </div>
+        <div class="tbl-hdr" style="grid-template-columns:36px 1fr 1.4fr 120px 110px 110px;margin:0 4px">
+          <span style="display:flex;justify-content:center;align-items:center"><input type="checkbox" id="chk-all-listado" onchange="toggleAllListado(this)" style="accent-color:var(--blue)"/></span><span>Nombre</span><span>Descripción</span><span>Fecha carga</span><span style="text-align:center">Estado</span><span style="text-align:center">Acciones</span>
+        </div>
+        <div id="listado-tbody"></div>
+      </div>
+      <div style="padding:12px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:12px;color:var(--muted)">Mostrar: <select style="border:1px solid var(--border);border-radius:6px;padding:3px 6px;font-size:12px"><option>10</option><option selected>25</option><option>50</option></select></span>
+        <div style="display:flex;gap:4px">
+          <button class="salir-btn" style="padding:5px 10px;font-size:12px">«</button>
+          <button class="salir-btn" style="padding:5px 10px;font-size:12px;border-color:var(--blue);color:var(--blue)">1</button>
+          <button class="salir-btn" style="padding:5px 10px;font-size:12px">»</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB: AYUDA ── -->
+  <div id="tab-ayuda" class="tab-panel" style="flex:1;padding:20px 28px;gap:20px;overflow-y:auto">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+      <div>
+        <h2 style="font-size:17px;font-weight:800;color:var(--text);font-family:'Outfit',sans-serif">Centro de Ayuda</h2>
+        <p style="font-size:12px;color:var(--muted);margin-top:2px">Resumen de uso, dashboards y preguntas frecuentes</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px">
+      <div class="help-stat">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--blueSoft);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
+          <span style="background:#D1FAE5;color:#065F46;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px">+12%</span>
+        </div>
+        <div class="help-stat-val">248</div>
+        <div class="help-stat-lbl">Documentos procesados</div>
+        <div style="margin-top:10px;background:var(--border);border-radius:99px;height:5px;overflow:hidden"><div style="height:100%;width:62%;background:linear-gradient(90deg,var(--blue),var(--blueAcc));border-radius:99px"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--muted)"><span>248 / 400 anuales</span><span>62%</span></div>
+      </div>
+      <div class="help-stat">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--blueSoft);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+          <span style="background:#D1FAE5;color:#065F46;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px">+8%</span>
+        </div>
+        <div class="help-stat-val">1,034</div>
+        <div class="help-stat-lbl">Consultas IA realizadas</div>
+        <div style="margin-top:10px;background:var(--border);border-radius:99px;height:5px;overflow:hidden"><div style="height:100%;width:41%;background:linear-gradient(90deg,var(--blueAcc),#7B9FFF);border-radius:99px"></div></div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--muted)"><span>1,034 / 2,500 anuales</span><span>41%</span></div>
+      </div>
+      <div class="help-stat">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--blueSoft);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <span style="background:var(--blueSoft);color:var(--blue);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px">Activo</span>
+        </div>
+        <div class="help-stat-val">6</div>
+        <div class="help-stat-lbl">Usuarios activos</div>
+        <div style="margin-top:10px;display:flex">
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blueAcc));border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin-right:-6px">AD</div>
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#4A6CF7,#7B9FFF);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin-right:-6px">SA</div>
+          <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#1A3AAF,#4A6CF7);border:2px solid #fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin-right:8px">AV</div>
+          <div style="font-size:12px;color:var(--muted);align-self:center">+3 más</div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="padding:20px;margin-bottom:20px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+        <span style="font-size:14px;font-weight:700;color:var(--text)">Documentos procesados — últimas 8 semanas</span>
+        <span style="font-size:12px;color:var(--muted)">2024</span>
+      </div>
+      <svg viewBox="0 0 560 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:120px">
+        <defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#10218B" stop-opacity=".85"/><stop offset="100%" stop-color="#4A6CF7" stop-opacity=".4"/></linearGradient></defs>
+        <rect x="20" y="60" width="44" height="50" rx="6" fill="url(#bg1)"/><rect x="90" y="40" width="44" height="70" rx="6" fill="url(#bg1)"/><rect x="160" y="50" width="44" height="60" rx="6" fill="url(#bg1)"/><rect x="230" y="30" width="44" height="80" rx="6" fill="url(#bg1)"/><rect x="300" y="45" width="44" height="65" rx="6" fill="url(#bg1)"/><rect x="370" y="20" width="44" height="90" rx="6" fill="url(#bg1)"/><rect x="440" y="35" width="44" height="75" rx="6" fill="url(#bg1)"/><rect x="510" y="15" width="44" height="95" rx="6" fill="url(#bg1)"/>
+        <text x="42" y="118" text-anchor="middle" font-size="10" fill="#9CA3AF">Sem 1</text><text x="112" y="118" text-anchor="middle" font-size="10" fill="#9CA3AF">Sem 2</text><text x="182" y="118" text-anchor="middle" font-size="10" fill="#9CA3AF">Sem 3</text><text x="252" y="118" text-anchor="middle" font-size="10" fill="#9CA3AF">Sem 4</text><text x="322" y="118" text-anchor="middle" font-size="10" fill="#9CA3AF">Sem 5</text><text x="392" y="118" text-anchor="middle" font-size="10" fill="#9CA3AF">Sem 6</text><text x="462" y="118" text-anchor="middle" font-size="10" fill="#9CA3AF">Sem 7</text><text x="532" y="118" text-anchor="middle" font-size="10" fill="#9CA3AF">Sem 8</text>
+        <text x="42" y="55" text-anchor="middle" font-size="10" fill="#10218B" font-weight="700">18</text><text x="112" y="35" text-anchor="middle" font-size="10" fill="#10218B" font-weight="700">24</text><text x="182" y="45" text-anchor="middle" font-size="10" fill="#10218B" font-weight="700">21</text><text x="252" y="25" text-anchor="middle" font-size="10" fill="#10218B" font-weight="700">30</text><text x="322" y="40" text-anchor="middle" font-size="10" fill="#10218B" font-weight="700">22</text><text x="392" y="15" text-anchor="middle" font-size="10" fill="#10218B" font-weight="700">35</text><text x="462" y="30" text-anchor="middle" font-size="10" fill="#10218B" font-weight="700">27</text><text x="532" y="10" text-anchor="middle" font-size="10" fill="#10218B" font-weight="700">38</text>
+      </svg>
+    </div>
+    <div>
+      <h3 style="font-size:15px;font-weight:800;color:var(--text);margin-bottom:12px;font-family:'Outfit',sans-serif">Preguntas Frecuentes</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cómo cargo un documento al sistema?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a">Dirígete a "Listado de Documentos" y haz clic en "Subir documento". Puedes cargar archivos PDF, Word o imágenes escaneadas. Los documentos también pueden recibirse directamente desde la impresora multifuncional Epson conectada al sistema.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Qué significa el estado "Cargado" vs "Procesado"?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a">"Cargado" indica que el archivo fue recibido pero aún no ha sido analizado por la IA. "Procesado" significa que la inteligencia artificial ya extrajo e indexó el contenido del documento, haciéndolo disponible para consultas.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Puedo hacer consultas sobre múltiples documentos a la vez?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a">Sí. En la sección "Consulta IA", al marcar "Todos los docs", el sistema buscará en todos los documentos procesados disponibles. Si quieres limitar la búsqueda a un documento específico, accede desde el detalle del documento y selecciona "IA".</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cómo genero un documento desde una plantilla?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a">Ve a "Generación de Documentos" y selecciona el tipo de documento que necesitas. Completa los datos del formulario con ayuda del asistente IA y presiona "Continuar" para previsualizar el documento generado.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">¿Cómo se integra la impresora Epson con el sistema?<svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a">La impresora multifuncional Epson envía los documentos escaneados directamente al sistema a través de la API configurada. Al escanear, se incluyen credenciales de usuario y el ID de la impresora para asignar correctamente el documento en el repositorio correspondiente.</div></div>
+      </div>
+    </div>
+  </div>
+</div><!-- /s-app -->
+
+
+<!-- ═══════════════════════════════
+     SCREEN 3 — GENERACIÓN DE DOCUMENTOS
+═══════════════════════════════ -->
+<div id="s-gendoc" class="screen">
+  <nav class="navbar">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="3" rx="1" fill="white"/><rect x="3" y="10.5" width="14" height="3" rx="1" fill="white"/><rect x="3" y="18" width="10" height="3" rx="1" fill="white"/></svg></div>
+      EPSON<span style="color:var(--blueAcc)">.IA</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <button class="nav-btn" onclick="goHome()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg> Inicio</button>
+      <div style="position:relative">
+        <div class="nav-user-chip" onclick="toggleDropdown('user-menu-gendoc')" style="cursor:pointer"><div class="nav-avatar">AD</div><span style="font-size:13px;font-weight:600;color:var(--text)">Administrador</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:2px"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div id="user-menu-gendoc" class="dropdown-menu" style="display:none">
+          <div class="dd-item" onclick="show('s-plantillas')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>Gestionar Plantillas</div>
+          <div class="dd-item" onclick="window.location.href='configuracion3.html'"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Configuración</div>
+          <div style="height:1px;background:var(--border);margin:3px 8px"></div>
+          <div class="dd-item danger" onclick="handleLogout()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Cerrar sesión</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div style="background:#fff;border-bottom:1.5px solid var(--border);padding:10px 28px;display:flex;align-items:center;gap:10px;flex-shrink:0">
+    <div style="width:28px;height:28px;background:var(--blueSoft);border-radius:8px;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
+    <span style="font-size:14px;font-weight:700;color:var(--text)">Generación de Documentos</span>
+    <span style="font-size:12px;color:var(--textLight)">— Selecciona un tipo y completa los datos con ayuda de la IA</span>
+  </div>
+  <div style="flex:1;display:flex;overflow:hidden;position:relative">
+    <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;padding:28px 32px;overflow-y:auto">
+      <p class="fu" style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue);text-align:center;margin-bottom:6px">EPSON · Generación de Documentos</p>
+      <h1 class="fu2" style="font-size:22px;font-weight:800;color:var(--text);font-family:'Outfit',sans-serif;text-align:center;margin-bottom:28px">Selecciona un documento</h1>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:720px;margin:0 auto;width:100%">
+        <div class="doc-card fu" onclick="selectDoc('autorizacion')"><div class="doc-card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="5" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><circle cx="16" cy="13" r="5" fill="none" stroke="var(--blue)" stroke-width="1.8"/><path d="M9 26c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" fill="none"/></svg></div><span class="doc-card-label">Autorizaciones</span></div>
+        <div class="doc-card fu2" onclick="selectDoc('poder')"><div class="doc-card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" fill="rgba(16,33,139,.08)" stroke="var(--blue)" stroke-width="1.8"/><path d="M10 16l4 4 8-8" stroke="var(--blue)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><span class="doc-card-label">Poderes</span></div>
+        <div class="doc-card fu3" onclick="selectDoc('acta')"><div class="doc-card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="5" y="3" width="18" height="24" rx="3" fill="rgba(16,33,139,.06)" stroke="var(--blue)" stroke-width="1.8"/><rect x="9" y="3" width="18" height="24" rx="3" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><line x1="13" y1="12" x2="23" y2="12" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"/><line x1="13" y1="16" x2="23" y2="16" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"/></svg></div><span class="doc-card-label">Actas</span></div>
+        <div class="doc-card fu3" onclick="selectDoc('contrato')"><div class="doc-card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="5" y="4" width="22" height="20" rx="3" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><line x1="10" y1="11" x2="22" y2="11" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"/><line x1="10" y1="15" x2="22" y2="15" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"/><line x1="10" y1="19" x2="16" y2="19" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"/></svg></div><span class="doc-card-label">Contratos</span></div>
+        <div class="doc-card fu4" onclick="selectDoc('declaracion')"><div class="doc-card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><path d="M16 4l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.6" stroke-linejoin="round"/></svg></div><span class="doc-card-label">Declaración<br>Jurada</span></div>
+        <div class="doc-card fu4" onclick="selectDoc('renuncia')"><div class="doc-card-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="5" y="4" width="16" height="22" rx="3" fill="rgba(16,33,139,.1)" stroke="var(--blue)" stroke-width="1.8"/><line x1="9" y1="11" x2="17" y2="11" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"/><line x1="9" y1="15" x2="17" y2="15" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round"/><path d="M20 18l6-6M26 18l-6-6" stroke="var(--blue)" stroke-width="2" stroke-linecap="round"/></svg></div><span class="doc-card-label">Carta de<br>Renuncia</span></div>
+      </div>
+      <div style="margin-top:28px;display:flex;justify-content:flex-start;max-width:720px;margin-left:auto;margin-right:auto;width:100%">
+        <button class="salir-btn" onclick="goHome()">← Volver al inicio</button>
+      </div>
+    </div>
+    <!-- Chat IA lateral -->
+    <div style="width:340px;flex-shrink:0;background:rgba(255,255,255,.97);border-left:1.5px solid var(--border);display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(16,33,139,.07);position:relative;z-index:1">
+      <div style="padding:14px 16px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;gap:10px">
+        <div style="width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--blueAcc));display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><text x="12" y="15" text-anchor="middle" font-size="9" fill="white" font-weight="800">AI</text></svg></div>
+        <div><p style="font-size:13.5px;font-weight:700;color:var(--text)">SONIA</p><p style="font-size:11px;color:#22c55e;display:flex;align-items:center;gap:4px"><span style="width:6px;height:6px;background:#22c55e;border-radius:50%;display:inline-block"></span>En línea</p></div>
+      </div>
+      <div class="chat-msgs" id="chat-msgs" style="overflow-y:auto;max-height:calc(100vh - 320px)">
+        <div class="msg-bot"><div class="bot-avatar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><div class="bubble-bot">¡Hola! Soy Sonia tu asistente IA. Cuéntame qué necesitas y te diré qué documento generar. Por ejemplo: <em>«mi papá no puede asistir al banco»</em></div></div>
+        <div style="padding:6px 6px 4px 38px;display:flex;flex-wrap:wrap;gap:5px" id="chat-suggestions">
+          <div class="chat-pill" onclick="sendSuggestion('Mi papá no puede hacer un trámite')">Mi papá no puede ir al banco</div>
+          <div class="chat-pill" onclick="sendSuggestion('Quiero darle poder a mi hermano')">Dar poder a mi hermano</div>
+          <div class="chat-pill" onclick="sendSuggestion('Necesito renunciar a mi trabajo')">Renunciar a mi trabajo</div>
+          <div class="chat-pill" onclick="sendSuggestion('Necesito un contrato de servicios')">Contrato de servicios</div>
+          <div class="chat-pill" onclick="sendSuggestion('Declarar mis bienes')">Declarar mis bienes</div>
+          <div class="chat-pill" onclick="sendSuggestion('Necesito un acta de reunión')">Acta de reunión</div>
+        </div>
+      </div>
+      <div class="chat-input-wrap">
+        <textarea class="chat-inp" rows="2" placeholder="Escribe tu consulta aquí..." id="chat-inp-text"></textarea>
+        <button class="gbtn" style="padding:10px 14px;font-size:13px;align-self:flex-end" onclick="sendChatMsg()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div><!-- /s-gendoc -->
+
+
+<!-- ═══════════════════════════════
+     SCREEN 4 — PLANTILLAS
+═══════════════════════════════ -->
+<div id="s-plantillas" class="screen">
+  <nav class="navbar">
+    <div class="nav-logo">
+      <div class="nav-logo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="3" rx="1" fill="white"/><rect x="3" y="10.5" width="14" height="3" rx="1" fill="white"/><rect x="3" y="18" width="10" height="3" rx="1" fill="white"/></svg></div>
+      EPSON<span style="color:var(--blueAcc)">.IA</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <button class="nav-btn" onclick="goHome()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg> Inicio</button>
+      <div style="position:relative">
+        <div class="nav-user-chip" onclick="toggleDropdown('user-menu-plt')" style="cursor:pointer"><div class="nav-avatar">AD</div><span style="font-size:13px;font-weight:600;color:var(--text)">Administrador</span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" style="margin-left:2px"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div id="user-menu-plt" class="dropdown-menu" style="display:none">
+          <div class="dd-item" onclick="show('s-plantillas')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>Gestionar Plantillas</div>
+          <div style="height:1px;background:var(--border);margin:3px 8px"></div>
+          <div class="dd-item danger" onclick="handleLogout()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Cerrar sesión</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div style="background:#fff;border-bottom:1.5px solid var(--border);padding:10px 28px;display:flex;align-items:center;gap:10px;flex-shrink:0">
+    <div style="width:28px;height:28px;background:var(--blueSoft);border-radius:8px;display:flex;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+    <span style="font-size:14px;font-weight:700;color:var(--text)">Gestión de Plantillas</span>
+    <span style="font-size:12px;color:var(--textLight)">— Sube y administra tus plantillas Word/PDF</span>
+  </div>
+  <div style="flex:1;overflow-y:auto;padding:28px 32px;display:flex;flex-direction:column;gap:22px">
+    <!-- SUBIR PLANTILLA -->
+    <div style="background:#fff;border-radius:16px;border:1.5px solid var(--border);padding:24px;box-shadow:0 2px 12px rgba(16,33,139,.05)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+        <div style="width:36px;height:36px;background:var(--blueSoft);border-radius:10px;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <h3 style="font-size:15px;font-weight:700;color:var(--text)">Subir nueva plantilla</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+        <div>
+          <label class="f-label">Nombre de la plantilla *</label>
+          <input id="pt-nombre" type="text" maxlength="80" placeholder="Ej: Carta Poder General" class="f-input"/>
+        </div>
+        <div>
+          <label class="f-label">Tipo</label>
+          <select id="pt-tipo" class="f-input"><option>Autorización</option><option>Poder</option><option>Contrato</option><option>Acta</option><option>Declaración Jurada</option><option>Carta</option><option>Otro</option></select>
+        </div>
+        <div>
+          <label class="f-label">Contexto / Descripción</label>
+          <textarea id="pt-contexto" rows="2" maxlength="500" placeholder="Describe para qué sirve esta plantilla..." class="f-input" style="resize:vertical"></textarea>
+        </div>
+        <div>
+          <label class="f-label">Tags (separados por coma)</label>
+          <div style="position:relative">
+            <input id="pt-tags-input" type="text" placeholder="Ej: notarial, poder, 2024" class="f-input" onkeydown="if(event.key==='Enter'||event.key===','){event.preventDefault();addTag()}" style="margin-bottom:6px"/>
+            <div id="pt-tags-container" style="display:flex;flex-wrap:wrap;gap:5px;min-height:24px"></div>
+          </div>
+        </div>
+      </div>
+      <div onclick="document.getElementById('pt-file').click()" class="upload-zone" style="margin-bottom:14px">
+        <input type="file" id="pt-file" accept=".docx,.doc,.pdf" style="display:none" onchange="handlePtFile(this)"/>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="margin:0 auto 10px;display:block"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <p style="font-size:13.5px;font-weight:600;color:var(--blue)">Haz clic para subir o arrastra aquí</p>
+        <p style="font-size:12px;color:var(--textLight);margin-top:4px">Soporta .docx, .doc, .pdf · Máx. 20MB</p>
+      </div>
+      <div id="pt-file-info" style="display:none;background:var(--blueSoft);border-radius:8px;padding:10px 14px;font-size:13px;align-items:center;gap:8px;margin-bottom:14px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
+        <span id="pt-file-name" style="color:var(--blue);font-weight:600"></span>
+      </div>
+      <button onclick="subirPlantilla()" class="gbtn" style="font-size:14px;padding:10px 28px;display:inline-flex;align-items:center;gap:8px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar plantilla
+      </button>
+    </div>
+
+    <!-- LISTADO -->
+    <div style="background:#fff;border-radius:16px;border:1.5px solid var(--border);overflow:hidden;box-shadow:0 2px 12px rgba(16,33,139,.05)">
+      <div style="padding:16px 20px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <h3 style="font-size:15px;font-weight:700;color:var(--text)">Plantillas disponibles</h3>
+        <button onclick="loadPlantillas()" style="background:var(--blueSoft);color:var(--blue);border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;cursor:pointer">↺ Actualizar</button>
+      </div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <thead>
+          <tr style="background:#f8faff">
+            <th style="text-align:left;padding:10px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border)">Nombre</th>
+            <th style="text-align:left;padding:10px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border)">Tipo</th>
+            <th style="text-align:left;padding:10px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border)">Tags</th>
+            <th style="text-align:left;padding:10px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border)">Estado</th>
+            <th style="text-align:left;padding:10px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border)">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="pt-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div><!-- /s-plantillas -->
+
+
+<!-- ═══════════════════════════════
+     MODALES
+═══════════════════════════════ -->
+
+<!-- Modal: Ver documento -->
+<div id="modal-view-doc" class="modal-bg" onclick="if(event.target===this)closeModal('modal-view-doc')">
+  <div class="modal-box big-modal" style="max-width:860px;padding:28px 32px">
+    <div class="modal-hdr">
+      <div>
+        <h3 id="modal-view-title">Nombre del documento</h3>
+        <p style="font-size:12px;color:var(--textLight);margin-top:3px" id="modal-view-meta">PDF · 3 páginas</p>
+      </div>
+      <button class="icon-btn" onclick="closeModal('modal-view-doc')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="viewer-wrap">
+      <div class="viewer-page" id="modal-view-content">
+        <p style="font-weight:700;font-size:16px;margin-bottom:12px;text-align:center">CONTRATO DE PRESTACIÓN DE SERVICIOS</p>
+        <p style="color:var(--muted);font-size:13px;margin-bottom:10px">Lima, 12 de abril de 2024</p>
+        <p>Conste por el presente documento el contrato de prestación de servicios que celebran, de una parte <strong>EMPRESA S.A.C.</strong>, con RUC N° 20512345678, debidamente representada por su Gerente General...</p>
+        <br><p>Este documento es una vista previa de muestra del contenido del PDF. En producción se renderizaría el archivo real.</p>
+      </div>
+      <div class="float-actions">
+        <button class="float-btn light" onclick="showSnack('Descargando documento...')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Descargar</button>
+        <button class="float-btn" onclick="openEditModal()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4z"/></svg>Editar</button>
+        <button class="float-btn light" onclick="saveViewDoc()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/><polyline points="7,3 7,8 15,8"/></svg>Guardar</button>
+        <button class="float-btn" style="background:linear-gradient(135deg,#16a34a,#22c55e)" onclick="openSendModal()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Editar (reordenar páginas) -->
+<div id="modal-edit-doc" class="modal-bg" onclick="if(event.target===this)closeEditModal()">
+  <div class="modal-box big-modal">
+    <div class="modal-hdr">
+      <div>
+        <h3>Reordenar páginas del PDF</h3>
+        <p style="font-size:12px;color:var(--textLight);margin-top:3px">Arrastra las páginas para cambiar su orden</p>
+      </div>
+      <button class="icon-btn" onclick="closeEditModal()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div id="pages-list" style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;max-height:360px;overflow-y:auto"></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end">
+      <button class="cbtn" style="font-size:13px;padding:9px 20px" onclick="closeEditModal()">Cancelar</button>
+      <button class="gbtn" style="font-size:13px;padding:9px 20px" onclick="savePageOrder()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar orden
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Enviar documento -->
+<div id="modal-send-doc" class="modal-bg" onclick="if(event.target===this)closeModal('modal-send-doc')">
+  <div class="modal-box" style="max-width:520px;padding:28px 32px;text-align:left">
+    <div class="modal-hdr">
+      <h3>Enviar documento por correo</h3>
+      <button class="icon-btn" onclick="closeModal('modal-send-doc')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <label class="f-label">De (remitente)</label>
+        <input type="email" class="f-input" value="documentos@notaria.com" readonly style="background:var(--bg);color:var(--muted)"/>
+      </div>
+      <div>
+        <label class="f-label">Para (destinatario) *</label>
+        <input type="email" id="send-to" class="f-input" placeholder="correo@destinatario.com"/>
+      </div>
+      <div>
+        <label class="f-label">Asunto</label>
+        <input type="text" id="send-subject" class="f-input"/>
+      </div>
+      <div>
+        <label class="f-label">Mensaje</label>
+        <textarea id="send-body" rows="4" class="f-input" style="resize:vertical">Estimado/a, adjunto encontrará el documento solicitado. Quedo a su disposición para cualquier consulta.</textarea>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:4px">
+        <button class="cbtn" style="font-size:13px;padding:9px 20px" onclick="closeModal('modal-send-doc')">Cancelar</button>
+        <button class="gbtn" style="font-size:13px;padding:9px 20px" onclick="sendDocument()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          Enviar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Nueva Carpeta -->
+<div id="modal-new-folder" class="modal-bg" onclick="if(event.target===this)closeModal('modal-new-folder')">
+  <div class="modal-box" style="max-width:400px;padding:28px 32px;text-align:left">
+    <div class="modal-hdr">
+      <h3>Nueva carpeta</h3>
+      <button class="icon-btn" onclick="closeModal('modal-new-folder')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <label class="f-label">Nombre</label>
+        <input type="text" id="new-folder-name" class="f-input" placeholder="Ej: Contratos 2024"/>
+      </div>
+      <div>
+        <label class="f-label">Privacidad</label>
+        <select id="new-folder-privacy" class="f-input"><option value="pub">Pública</option><option value="priv">Privada</option></select>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="cbtn" style="font-size:13px;padding:9px 20px" onclick="closeModal('modal-new-folder')">Cancelar</button>
+        <button class="gbtn" style="font-size:13px;padding:9px 20px" onclick="createFolder()">Crear</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Renombrar Carpeta -->
+<div id="modal-rename-folder" class="modal-bg" onclick="if(event.target===this)closeModal('modal-rename-folder')">
+  <div class="modal-box" style="max-width:400px;padding:28px 32px;text-align:left">
+    <div class="modal-hdr">
+      <h3>Renombrar carpeta</h3>
+      <button class="icon-btn" onclick="closeModal('modal-rename-folder')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <label class="f-label">Nuevo nombre</label>
+        <input type="text" id="rename-folder-input" class="f-input"/>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="cbtn" style="font-size:13px;padding:9px 20px" onclick="closeModal('modal-rename-folder')">Cancelar</button>
+        <button class="gbtn" style="font-size:13px;padding:9px 20px" onclick="renameFolder()">Renombrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Renombrar documento -->
+<div id="modal-rename-doc" class="modal-bg" onclick="if(event.target===this)closeModal('modal-rename-doc')">
+  <div class="modal-box" style="max-width:400px;padding:28px 32px;text-align:left">
+    <div class="modal-hdr">
+      <h3>Renombrar documento</h3>
+      <button class="icon-btn" onclick="closeModal('modal-rename-doc')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <label class="f-label">Nuevo nombre</label>
+        <input type="text" id="rename-doc-input" class="f-input"/>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="cbtn" style="font-size:13px;padding:9px 20px" onclick="closeModal('modal-rename-doc')">Cancelar</button>
+        <button class="gbtn" style="font-size:13px;padding:9px 20px" onclick="renameDoc()">Renombrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Mover/Copiar -->
+<div id="modal-move-doc" class="modal-bg" onclick="if(event.target===this)closeModal('modal-move-doc')">
+  <div class="modal-box" style="max-width:420px;padding:28px 32px;text-align:left">
+    <div class="modal-hdr">
+      <h3>Mover / Copiar documentos</h3>
+      <button class="icon-btn" onclick="closeModal('modal-move-doc')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <label class="f-label">Destino</label>
+        <select id="move-dest" class="f-input"></select>
+      </div>
+      <div>
+        <label class="f-label">Operación</label>
+        <select id="move-op" class="f-input"><option value="move">Mover</option><option value="copy">Copiar</option></select>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="cbtn" style="font-size:13px;padding:9px 20px" onclick="closeModal('modal-move-doc')">Cancelar</button>
+        <button class="gbtn" style="font-size:13px;padding:9px 20px" onclick="executeMoveDoc()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Subir documento (listado) -->
+<div id="modal-upload" class="modal-bg" onclick="if(event.target===this)closeModal('modal-upload')">
+  <div class="modal-box" style="max-width:460px;padding:28px 32px;text-align:left">
+    <div class="modal-hdr">
+      <h3>Subir documento</h3>
+      <button class="icon-btn" onclick="closeModal('modal-upload')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div>
+        <label class="f-label">Nombre descriptivo</label>
+        <input type="text" id="upload-nombre" class="f-input" placeholder="Ej: Contrato enero 2024"/>
+      </div>
+      <div>
+        <label class="f-label">Descripción</label>
+        <input type="text" id="upload-desc" class="f-input" placeholder="Breve descripción del documento"/>
+      </div>
+      <div onclick="document.getElementById('upload-file-input').click()" class="upload-zone">
+        <input type="file" id="upload-file-input" accept=".pdf,.docx,.doc" style="display:none"/>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.5" style="margin:0 auto 8px;display:block"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <p style="font-size:13px;font-weight:600;color:var(--blue)">Seleccionar archivo</p>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="cbtn" style="font-size:13px;padding:9px 20px" onclick="closeModal('modal-upload')">Cancelar</button>
+        <button class="gbtn" style="font-size:13px;padding:9px 20px" onclick="uploadDoc()">Subir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Procesar Seleccionados -->
+<div id="modal-procesar" class="modal-bg" onclick="if(event.target===this)closeModal('modal-procesar')">
+  <div class="modal-box" style="max-width:440px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div style="width:36px;height:36px;border-radius:10px;background:var(--blueSoft);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></div>
+        <h3 style="font-size:15px;font-weight:700;color:var(--text)">Procesar Seleccionados</h3>
+      </div>
+      <button class="icon-btn" onclick="closeModal('modal-procesar')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Selecciona cómo deseas procesar los documentos seleccionados:</p>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:22px">
+      <label id="proc-opt-inmediato" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:2px solid var(--blue);border-radius:12px;cursor:pointer;background:var(--blueSoft)" onclick="selectProcOpt('inmediato')">
+        <input type="radio" name="proc-tipo" value="inmediato" checked style="accent-color:var(--blue);margin-top:3px"/>
+        <div>
+          <p style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:3px">⚡ Procesar inmediatamente</p>
+          <p style="font-size:12px;color:var(--muted)">Usa 5 créditos de procesamiento ahora. El resultado estará disponible en minutos.</p>
+        </div>
+      </label>
+      <label id="proc-opt-horario" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1.5px solid var(--border);border-radius:12px;cursor:pointer;background:#fff" onclick="selectProcOpt('horario')">
+        <input type="radio" name="proc-tipo" value="horario" style="accent-color:var(--blue);margin-top:3px"/>
+        <div style="flex:1">
+          <p style="font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:3px">🕐 Procesamiento programado</p>
+          <p style="font-size:12px;color:var(--muted);margin-bottom:8px">Procesa en un horario específico. No consume créditos inmediatos.</p>
+          <div id="proc-horario-opts" style="display:none;flex-direction:column;gap:8px">
+            <div style="display:flex;gap:8px;align-items:center">
+              <label style="font-size:12px;color:var(--text);font-weight:600;width:60px">Fecha:</label>
+              <input type="date" id="proc-fecha" class="f-input" style="margin-bottom:0;flex:1"/>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <label style="font-size:12px;color:var(--text);font-weight:600;width:60px">Hora:</label>
+              <input type="time" id="proc-hora" class="f-input" style="margin-bottom:0;flex:1"/>
+            </div>
+          </div>
+        </div>
+      </label>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="cbtn" style="font-size:13px;padding:9px 20px" onclick="closeModal('modal-procesar')">Cancelar</button>
+      <button class="gbtn" style="font-size:13px;padding:9px 20px" onclick="confirmarProcesar()">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Envío Documento -->
+<div id="modal-envio-doc" class="modal-bg" onclick="if(event.target===this)closeModal('modal-envio-doc')">
+  <div class="modal-box" style="max-width:400px;text-align:center">
+    <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#059669,#047857);display:flex;align-items:center;justify-content:center;margin:0 auto 18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h3 style="font-size:17px;font-weight:800;color:var(--text);margin-bottom:10px;font-family:'Outfit',sans-serif">¡Documento enviado!</h3>
+    <p style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:22px">Se envió el documento, acérquese a ventanilla y brinde su DNI.</p>
+    <button class="gbtn" style="padding:10px 28px;font-size:14px" onclick="closeModal('modal-envio-doc');document.getElementById('doc-preview-panel').style.display='none'">Aceptar</button>
+  </div>
+</div>
+
+<!-- Snack -->
+<div id="snack"></div>
+
+<!-- Global dropdown styles -->
+<style>
+.tab-row.on { flex-direction: row !important; }
+.badge-priv-btn{background:#FEF3C7;color:#92400E;border:1px solid #FCD34D;border-radius:20px;padding:3px 10px;font-size:10.5px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit}
+.badge-priv-btn:hover{background:#FDE68A}
+.badge-pub-btn{background:#DCFCE7;color:#065F46;border:1px solid #86EFAC;border-radius:20px;padding:3px 10px;font-size:10.5px;font-weight:700;cursor:pointer;transition:all .15s;font-family:inherit}
+.badge-pub-btn:hover{background:#BBF7D0}
+.chat-pill{display:inline-flex;align-items:center;background:var(--blueSoft);border:1px solid rgba(16,33,139,.2);border-radius:20px;padding:4px 12px;font-size:11.5px;color:var(--blue);cursor:pointer;transition:background .13s;font-weight:600}
+.chat-pill:hover{background:#c7d7f5}
+.dropdown-menu{position:absolute;right:0;top:calc(100% + 6px);background:#fff;border:1.5px solid var(--border);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:300;min-width:190px;padding:4px}
+.dd-item{padding:9px 14px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:8px;border-radius:8px;color:var(--text);transition:background .13s}
+.dd-item:hover{background:var(--blueSoft)}
+.dd-item.danger{color:#dc2626}
+.dd-item.danger:hover{background:#FEF2F2}
+</style>
+
+<script>
+// ═══════════════════ DATA MOCK ═══════════════════
+const FOLDERS = [
+  {id:1,name:'Contratos',privacy:'pub',docs:[
+    {id:1,name:'Contrato_2024_001.pdf',desc:'Contrato de prestación de servicios — Vigente hasta dic 2024',date:'12/04/2024',estado:'proc',priv:false,pages:['Portada','Cláusulas generales','Anexo A']},
+    {id:2,name:'Contrato_Alquiler.pdf',desc:'Contrato de arrendamiento local comercial',date:'20/03/2024',estado:'carg',priv:false,pages:['Inicio','Condiciones','Firmas']}
+  ]},
+  {id:2,name:'Actas',privacy:'pub',docs:[
+    {id:3,name:'Acta_Reunion_Abr.pdf',desc:'Acta de reunión mensual — Abril 2024',date:'02/04/2024',estado:'proc',priv:false,pages:['Asistentes','Orden del día','Acuerdos']}
+  ]},
+  {id:3,name:'Declaraciones',privacy:'priv',docs:[
+    {id:4,name:'DecJurada_MarioU.pdf',desc:'Declaración Jurada de domicilio — 2024',date:'28/03/2024',estado:'proc',priv:true,pages:['Declaración','Datos personales','Firma']}
+  ]},
+  {id:4,name:'Escaneados',privacy:'pub',docs:[
+    {id:5,name:'Escaneado_impresora_0412.pdf',desc:'—',date:'04/04/2024',estado:'carg',priv:false,pages:['Página 1']}
+  ]}
+];
+
+const LISTADO_DOCS = [
+  {id:1,name:'Contrato_2024_001.pdf',desc:'Contrato de prestación de servicios — Vigente hasta dic 2024',date:'12/04/2024',estado:'proc'},
+  {id:2,name:'Acta_Reunion_Abr.pdf',desc:'Acta de reunión mensual — Abril 2024',date:'02/04/2024',estado:'proc'},
+  {id:3,name:'Escaneado_impresora_0412.pdf',desc:'—',date:'04/04/2024',estado:'carg'},
+  {id:4,name:'DecJurada_MarioU.pdf',desc:'Declaración Jurada de domicilio — 2024',date:'28/03/2024',estado:'proc'},
+  {id:5,name:'Acta_Fundacion.pdf',desc:'Acta de fundación de la empresa — 2020',date:'10/01/2020',estado:'proc'}
+];
+
+const PLANTILLAS_DEFAULT = [
+  {id:1,nombre:'Carta Poder General',tipo:'Poder',contexto:'Plantilla estándar para carta poder notarial general.',tags:['poder','notarial','general'],estado:'Activo'},
+  {id:2,nombre:'Autorización de Viaje Menor',tipo:'Autorización',contexto:'Para autorizar viajes internacionales de menores.',tags:['autorización','menor','viaje'],estado:'Activo'}
+];
+
+// ═══════════════════ NAVIGATION ═══════════════════
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  const s=document.getElementById(id);
+  if(s) s.classList.add('on');
+  closeAllDropdowns();
+  if(id==='s-plantillas') loadPlantillas();
+}
+
+function goHome(){show('s-home');}
+
+function gos(tabId){
+  show('s-app');
+  const btns=document.querySelectorAll('.ntab');
+  btns.forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
+  const panel=document.getElementById(tabId);
+  if(panel) panel.classList.add('on');
+  const btnId='btn-'+tabId.replace('tab-','');
+  const btn=document.getElementById(btnId);
+  if(btn) btn.classList.add('on');
+  if(tabId==='tab-guardados') renderFolders();
+  if(tabId==='tab-listado') renderListado();
+}
+
+function switchTab(tabId,el){
+  document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('on'));
+  el.classList.add('on');
+  const panel=document.getElementById(tabId);
+  if(panel) panel.classList.add('on');
+  if(tabId==='tab-guardados') renderFolders();
+  if(tabId==='tab-listado') renderListado();
+}
+
+// ═══════════════════ DROPDOWN ═══════════════════
+function toggleDropdown(id){
+  const m=document.getElementById(id);
+  if(!m) return;
+  const open=m.style.display==='block';
+  closeAllDropdowns();
+  if(!open) m.style.display='block';
+}
+
+function closeAllDropdowns(){
+  document.querySelectorAll('.dropdown-menu').forEach(m=>m.style.display='none');
+}
+
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.nav-user-chip')&&!e.target.closest('.dropdown-menu')) closeAllDropdowns();
+});
+
+// ═══════════════════ MODALS ═══════════════════
+function openModal(id){document.getElementById(id).style.display='flex';}
+function closeModal(id){document.getElementById(id).style.display='none';}
+
+// ═══════════════════ MIS DOCUMENTOS ═══════════════════
+let activeFolder=null;
+
+function renderFolders(){
+  const grid=document.getElementById('folder-grid-docs');
+  document.getElementById('docs-folder-view').style.display='block';
+  document.getElementById('docs-list-view').style.display='none';
+  document.getElementById('docs-title').textContent='Mis Documentos';
+  document.getElementById('docs-subtitle').textContent='Vista de carpetas';
+  document.getElementById('docs-folder-actions').style.display='flex';
+  grid.innerHTML=FOLDERS.map(f=>`
+    <div class="folder-item" onclick="openFolder(${f.id})">
+      <svg width="56" height="56" viewBox="0 0 48 48" fill="none">
+        <path d="M4 10a4 4 0 014-4h10l4 6h18a4 4 0 014 4v22a4 4 0 01-4 4H8a4 4 0 01-4-4V10z" fill="var(--blueSoft)" stroke="var(--blue)" stroke-width="2"/>
+      </svg>
+      <div class="f-name">${f.name}</div>
+      <div class="f-count">${f.docs.length} doc${f.docs.length!==1?'s':''} · <span class="${f.privacy==='priv'?'badge-priv':'badge-pub'}">${f.privacy==='priv'?'Privada':'Pública'}</span></div>
+    </div>`).join('');
+}
+
+function openFolder(folderId){
+  activeFolder=FOLDERS.find(f=>f.id===folderId);
+  if(!activeFolder) return;
+  document.getElementById('docs-folder-view').style.display='none';
+  document.getElementById('docs-list-view').style.display='block';
+  document.getElementById('docs-title').textContent=activeFolder.name;
+  document.getElementById('docs-subtitle').textContent=`${activeFolder.docs.length} documentos`;
+  document.getElementById('docs-folder-actions').style.display='none';
+  document.getElementById('active-folder-name').textContent=activeFolder.name;
+  renderFolderDocs();
+  // populate move modal
+  const sel=document.getElementById('move-dest');
+  sel.innerHTML=FOLDERS.filter(f=>f.id!==activeFolder.id).map(f=>`<option value="${f.id}">${f.name}</option>`).join('');
+}
+
+function renderFolderDocs(){
+  const tbody=document.getElementById('folder-docs-tbody');
+  if(!activeFolder||activeFolder.docs.length===0){
+    tbody.innerHTML='<div style="text-align:center;padding:32px;color:var(--textLight)">No hay documentos en esta carpeta</div>';
+    return;
+  }
+  tbody.innerHTML=activeFolder.docs.map(d=>`
+    <div class="doc-row-docs" style="grid-template-columns:36px 1fr 1.2fr 100px 80px 100px 130px;gap:8px;align-items:center">
+      <div style="display:flex;justify-content:center;align-items:center"><input type="checkbox" class="doc-check" data-id="${d.id}" style="accent-color:var(--blue)"/></div>
+      <span style="font-weight:600;color:var(--text);font-size:12.5px">${d.name}</span>
+      <span style="color:var(--muted);font-size:12px">${d.desc}</span>
+      <span style="color:var(--muted);font-size:12px">${d.date}</span>
+      <div style="display:flex;justify-content:center;align-items:center"><span class="${d.estado==='proc'?'badge-proc':'badge-carg'}" style="font-size:10px">${d.estado==='proc'?'Procesado':'Pendiente'}</span></div>
+      <div style="display:flex;justify-content:center;align-items:center">
+        <button onclick="toggleDocPrivacyBtn(${d.id})" class="${d.priv?'badge-priv-btn':'badge-pub-btn'}" id="priv-btn-${d.id}">${d.priv?'🔒 Privado':'🌐 Público'}</button>
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;align-items:center">
+        <button class="icon-btn" title="Ver" onclick="viewDoc(${d.id})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>  
+        <button class="icon-btn" title="Mover/Copiar" onclick="openMoveSelected(${d.id})" style="background:#EFF6FF;color:#1D4ED8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <button class="icon-btn danger" title="Eliminar" onclick="deleteDocFromFolder(${d.id})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+      </div>
+    </div>`).join('');
+}
+
+function backToFolders(){renderFolders();}
+
+function deleteDocFromFolder(docId){
+  if(!activeFolder) return;
+  activeFolder.docs=activeFolder.docs.filter(d=>d.id!==docId);
+  renderFolderDocs();
+  showSnack('Documento eliminado');
+}
+
+function toggleFolderPrivacy(){
+  if(!activeFolder) return;
+  activeFolder.privacy=activeFolder.privacy==='priv'?'pub':'priv';
+  document.getElementById('toggle-privacy-btn').textContent=activeFolder.privacy==='priv'?'Hacer Pública':'Hacer Privada';
+  renderFolderDocs();
+  showSnack('Privacidad actualizada');
+}
+
+function openRenameFolder(){
+  document.getElementById('rename-folder-input').value=activeFolder?activeFolder.name:'';
+  openModal('modal-rename-folder');
+}
+
+function renameFolder(){
+  const val=document.getElementById('rename-folder-input').value.trim();
+  if(!val||!activeFolder) return;
+  activeFolder.name=val;
+  document.getElementById('active-folder-name').textContent=val;
+  document.getElementById('docs-title').textContent=val;
+  closeModal('modal-rename-folder');
+  showSnack('Carpeta renombrada');
+}
+
+function openRenameDoc(){
+  const checked=document.querySelectorAll('.doc-check:checked');
+  if(checked.length===0){showSnack('Selecciona un documento para renombrar');return;}
+  if(checked.length>1){showSnack('Selecciona solo un documento');return;}
+  const docId=parseInt(checked[0].dataset.id);
+  const doc=activeFolder&&activeFolder.docs.find(d=>d.id===docId);
+  if(!doc) return;
+  document.getElementById('rename-doc-input').value=doc.name;
+  openModal('modal-rename-doc');
+}
+
+function renameDoc(){
+  const val=document.getElementById('rename-doc-input').value.trim();
+  if(!val) return;
+  const checked=document.querySelectorAll('.doc-check:checked');
+  if(checked.length!==1) return;
+  const docId=parseInt(checked[0].dataset.id);
+  const doc=activeFolder&&activeFolder.docs.find(d=>d.id===docId);
+  if(!doc) return;
+  doc.name=val;
+  closeModal('modal-rename-doc');
+  renderFolderDocs();
+  showSnack('Documento renombrado');
+}
+
+function createFolder(){
+  const name=document.getElementById('new-folder-name').value.trim();
+  const priv=document.getElementById('new-folder-privacy').value;
+  if(!name) return;
+  FOLDERS.push({id:Date.now(),name,privacy:priv,docs:[]});
+  closeModal('modal-new-folder');
+  renderFolders();
+  showSnack('Carpeta creada');
+}
+
+function executeMoveDoc(){
+  const destId=parseInt(document.getElementById('move-dest').value);
+  const op=document.getElementById('move-op').value;
+  const ids=getCheckedDocs();
+  if(window._moveDocId) ids.push(window._moveDocId);
+  const uniqueIds=[...new Set(ids)];
+  const dest=FOLDERS.find(f=>f.id===destId);
+  if(!dest||!activeFolder){closeModal('modal-move-doc');return;}
+  uniqueIds.forEach(id=>{
+    const doc=activeFolder.docs.find(d=>d.id===id);
+    if(!doc) return;
+    dest.docs.push({...doc,id:Date.now()+Math.random()});
+    if(op==='move') activeFolder.docs=activeFolder.docs.filter(d=>d.id!==id);
+  });
+  closeModal('modal-move-doc');
+  window._moveDocId=null;
+  renderFolderDocs();
+  showSnack(op==='move'?`${uniqueIds.length} doc(s) movidos a ${dest.name}`:`${uniqueIds.length} doc(s) copiados a ${dest.name}`);
+}
+
+// ═══════════════════ VIEWER ═══════════════════
+function viewDoc(docId){
+  let doc=null;
+  FOLDERS.forEach(f=>f.docs.forEach(d=>{if(d.id===docId) doc=d;}));
+  if(!doc) return;
+  document.getElementById('modal-view-title').textContent=doc.name;
+  document.getElementById('modal-view-meta').textContent=`PDF · ${doc.pages.length} páginas`;
+  document.getElementById('send-subject').value='Documento: '+doc.name;
+  window._currentViewDoc=doc;
+  openModal('modal-view-doc');
+}
+
+function viewDocFromListado(docId){
+  const doc=LISTADO_DOCS.find(d=>d.id===docId);
+  if(!doc) return;
+  document.getElementById('modal-view-title').textContent=doc.name;
+  document.getElementById('modal-view-meta').textContent='PDF · Vista previa';
+  document.getElementById('send-subject').value='Documento: '+doc.name;
+  window._currentViewDoc={name:doc.name,pages:['Página 1','Página 2','Página 3']};
+  openModal('modal-view-doc');
+}
+
+function saveViewDoc(){
+  closeModal('modal-view-doc');
+  renderFolderDocs();
+  showSnack('Cambios guardados');
+}
+
+// ═══════════════════ EDIT MODAL ═══════════════════
+function openEditModal(){
+  closeModal('modal-view-doc');
+  const doc=window._currentViewDoc||{pages:['Página 1','Página 2','Página 3']};
+  const list=document.getElementById('pages-list');
+  list.innerHTML=doc.pages.map((p,i)=>`
+    <div class="drag-page" draggable="true" data-idx="${i}"
+      ondragstart="dragStart(event)" ondragover="dragOver(event)" ondrop="dropPage(event)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
+      <span style="width:22px;height:22px;background:var(--blueSoft);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--blue)">${i+1}</span>
+      <span>${p}</span>
+    </div>`).join('');
+  openModal('modal-edit-doc');
+}
+
+function closeEditModal(){
+  closeModal('modal-edit-doc');
+  openModal('modal-view-doc');
+}
+
+let dragSrc=null;
+function dragStart(e){dragSrc=e.currentTarget;e.currentTarget.classList.add('dragging');}
+function dragOver(e){e.preventDefault();}
+function dropPage(e){
+  e.preventDefault();
+  if(!dragSrc||dragSrc===e.currentTarget) return;
+  const list=document.getElementById('pages-list');
+  const items=[...list.children];
+  const srcIdx=items.indexOf(dragSrc);
+  const tgtIdx=items.indexOf(e.currentTarget);
+  if(srcIdx<tgtIdx) list.insertBefore(dragSrc,e.currentTarget.nextSibling);
+  else list.insertBefore(dragSrc,e.currentTarget);
+  dragSrc.classList.remove('dragging');
+  dragSrc=null;
+}
+
+function savePageOrder(){
+  closeModal('modal-edit-doc');
+  openModal('modal-view-doc');
+  showSnack('Orden de páginas guardado');
+}
+
+// ═══════════════════ SEND MODAL ═══════════════════
+function openSendModal(){
+  closeModal('modal-view-doc');
+  openModal('modal-send-doc');
+}
+
+function sendDocument(){
+  const to=document.getElementById('send-to').value.trim();
+  if(!to){showSnack('Ingresa un destinatario');return;}
+  closeModal('modal-send-doc');
+  showSnack('Documento enviado a '+to);
+}
+
+// ═══════════════════ LISTADO DOCS ═══════════════════
+function renderListado(){
+  const tbody=document.getElementById('listado-tbody');
+  tbody.innerHTML=LISTADO_DOCS.map(d=>`
+    <div class="doc-row" style="grid-template-columns:36px 1fr 1.4fr 120px 110px 110px;padding:11px 14px">
+      <div style="display:flex;justify-content:center;align-items:center"><input type="checkbox" class="chk-listado" value="${d.id}" style="accent-color:var(--blue)"/></div>
+      <span style="font-weight:600;color:var(--text);font-size:12.5px">${d.name}</span>
+      <span style="color:var(--muted);font-size:12px">${d.desc}</span>
+      <span style="color:var(--muted);font-size:12px">${d.date}</span>
+      <div style="display:flex;justify-content:center;align-items:center"><span class="${d.estado==='proc'?'badge-proc':'badge-carg'}">${d.estado==='proc'?'Procesado':'Cargado'}</span></div>
+      <div style="display:flex;gap:5px;justify-content:center;align-items:center">
+        <button class="icon-btn" title="Ver" onclick="viewDocFromListado(${d.id})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        <button class="icon-btn danger" title="Eliminar" onclick="deleteListadoDoc(${d.id})"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+      </div>
+    </div>`).join('');
+  document.getElementById('listado-count').textContent=`1–${LISTADO_DOCS.length} de ${LISTADO_DOCS.length}`;
+}
+
+function toggleAllListado(master){
+  document.querySelectorAll('.chk-listado').forEach(c=>c.checked=master.checked);
+}
+
+function abrirModalProcesar(){
+  const sel=[...document.querySelectorAll('.chk-listado:checked')].map(c=>c.value);
+  if(!sel.length){showSnack('Selecciona al menos un documento');return;}
+  selectProcOpt('inmediato');
+  openModal('modal-procesar');
+}
+
+function selectProcOpt(opt){
+  const inm=document.getElementById('proc-opt-inmediato');
+  const hor=document.getElementById('proc-opt-horario');
+  const horOpts=document.getElementById('proc-horario-opts');
+  if(opt==='inmediato'){
+    inm.style.border='2px solid var(--blue)';inm.style.background='var(--blueSoft)';
+    hor.style.border='1.5px solid var(--border)';hor.style.background='#fff';
+    horOpts.style.display='none';
+    inm.querySelector('input').checked=true;
+  } else {
+    hor.style.border='2px solid var(--blue)';hor.style.background='var(--blueSoft)';
+    inm.style.border='1.5px solid var(--border)';inm.style.background='#fff';
+    horOpts.style.display='flex';
+    hor.querySelector('input').checked=true;
+  }
+}
+
+function confirmarProcesar(){
+  const tipo=document.querySelector('input[name="proc-tipo"]:checked').value;
+  closeModal('modal-procesar');
+  if(tipo==='inmediato'){
+    showSnack('⚡ Procesando documentos con IA…');
+  } else {
+    const f=document.getElementById('proc-fecha').value;
+    const h=document.getElementById('proc-hora').value;
+    showSnack('🕐 Procesamiento programado para '+(f&&h?f+' '+h:'la fecha seleccionada'));
+  }
+}
+
+function guardarConsultaIA(){
+  const txt=document.getElementById('ia-result-text');
+  if(!txt||!txt.textContent.trim()){showSnack('No hay resultado para guardar');return;}
+  showSnack('Consulta guardada correctamente ✓');
+}
+
+let currentOrganizar='recientes';
+
+function filterDocs(){
+  const q=(document.getElementById('docs-search')||{value:''}).value.toLowerCase().trim();
+  const from=document.getElementById('docs-date-from')?document.getElementById('docs-date-from').value:'';
+  const to=document.getElementById('docs-date-to')?document.getElementById('docs-date-to').value:'';
+
+  // If we're in folder view (list view), filter the doc rows
+  if(activeFolder && document.getElementById('docs-list-view').style.display!=='none'){
+    filterFolderDocRows(q,from,to);
+    return;
+  }
+  // Folder grid view: filter folders by name
+  document.querySelectorAll('#folder-grid-docs .folder-item').forEach(el=>{
+    const name=(el.dataset.folderName||el.querySelector('.f-name')?.textContent||'').toLowerCase();
+    el.style.display=name.includes(q)?'':'none';
+  });
+}
+
+function filterFolderDocRows(q,from,to){
+  if(!activeFolder) return;
+  let docs=[...activeFolder.docs];
+  // Apply organizar filter
+  if(currentOrganizar==='favoritos') docs=docs.filter(d=>d.fav);
+  if(currentOrganizar==='papelera') docs=docs.filter(d=>d.deleted);
+  if(currentOrganizar==='recientes') docs=[...docs].sort((a,b)=>parseDate(b.date)-parseDate(a.date));
+  if(currentOrganizar==='documentos') docs=[...docs].sort((a,b)=>a.name.localeCompare(b.name));
+  // Apply search
+  if(q) docs=docs.filter(d=>(d.name+d.desc).toLowerCase().includes(q));
+  // Apply date range
+  if(from||to){
+    docs=docs.filter(d=>{
+      const dt=parseDate(d.date);
+      if(from && dt < new Date(from)) return false;
+      if(to && dt > new Date(to+'T23:59:59')) return false;
+      return true;
+    });
+  }
+  renderFolderDocsFiltered(docs);
+}
+
+function parseDate(str){
+  // str: "12/04/2024" → DD/MM/YYYY
+  if(!str) return new Date(0);
+  const p=str.split('/');
+  if(p.length===3) return new Date(p[2],p[1]-1,p[0]);
+  return new Date(str);
+}
+
+function renderFolderDocsFiltered(docs){
+  const tbody=document.getElementById('folder-docs-tbody');
+  if(!docs||docs.length===0){
+    tbody.innerHTML='<div style="text-align:center;padding:32px;color:var(--textLight)">No hay documentos que coincidan con el filtro</div>';
+    return;
+  }
+  tbody.innerHTML=docs.map(d=>`
+    <div class="doc-row-docs" style="grid-template-columns:36px 1fr 1.2fr 100px 80px 100px 130px;gap:8px;align-items:center">
+      <div style="display:flex;justify-content:center;align-items:center"><input type="checkbox" class="doc-check" data-id="${d.id}" style="accent-color:var(--blue)"/></div>
+      <span style="font-weight:600;color:var(--text);font-size:12.5px">${d.name}</span>
+      <span style="color:var(--muted);font-size:12px">${d.desc}</span>
+      <span style="color:var(--muted);font-size:12px">${d.date}</span>
+      <div style="display:flex;justify-content:center;align-items:center"><span class="${d.estado==='proc'?'badge-proc':'badge-carg'}" style="font-size:10px">${d.estado==='proc'?'Procesado':'Pendiente'}</span></div>
+      <div style="display:flex;justify-content:center;align-items:center">
+        <button onclick="toggleDocPrivacyBtn(${d.id})" class="${d.priv?'badge-priv-btn':'badge-pub-btn'}" id="priv-btn-${d.id}">${d.priv?'🔒 Privado':'🌐 Público'}</button>
+      </div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;justify-content:center;align-items:center">
+        <button class="icon-btn" title="Ver" onclick="viewDoc(${d.id})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        <button class="icon-btn" title="Mover/Copiar" onclick="openMoveSelected(${d.id})" style="background:#EFF6FF;color:#1D4ED8"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="5 9 2 12 5 15"/><polyline points="9 5 12 2 15 5"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg></button>
+        <button class="icon-btn danger" title="Eliminar" onclick="deleteDocFromFolder(${d.id})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+      </div>
+    </div>`).join('');
+}
+
+function setOrganizar(tipo,btn){
+  currentOrganizar=tipo;
+  document.querySelectorAll('#tab-guardados .sdi').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  // Re-apply filter with new organizar type
+  const q=(document.getElementById('docs-search')||{value:''}).value.toLowerCase().trim();
+  const from=document.getElementById('docs-date-from')?document.getElementById('docs-date-from').value:'';
+  const to=document.getElementById('docs-date-to')?document.getElementById('docs-date-to').value:'';
+
+  if(activeFolder && document.getElementById('docs-list-view').style.display!=='none'){
+    filterFolderDocRows(q,from,to);
+  } else {
+    // In folder grid view, apply organizar to folders
+    applyOrganizarToFolders(tipo);
+  }
+}
+
+function applyOrganizarToFolders(tipo){
+  const grid=document.getElementById('folder-grid-docs');
+  let folders=[...FOLDERS];
+  if(tipo==='recientes') folders=[...folders].sort((a,b)=>{
+    const lastA=a.docs.length?parseDate(a.docs[a.docs.length-1].date):new Date(0);
+    const lastB=b.docs.length?parseDate(b.docs[b.docs.length-1].date):new Date(0);
+    return lastB-lastA;
+  });
+  if(tipo==='documentos') folders=[...folders].sort((a,b)=>a.name.localeCompare(b.name));
+  if(tipo==='favoritos') folders=folders.filter(f=>f.fav);
+  if(tipo==='papelera') folders=folders.filter(f=>f.deleted);
+  grid.innerHTML=folders.map(f=>`
+    <div class="folder-item" data-folder-name="${f.name}" onclick="openFolder(${f.id})">
+      <svg width="56" height="56" viewBox="0 0 48 48" fill="none">
+        <path d="M4 10a4 4 0 014-4h10l4 6h18a4 4 0 014 4v22a4 4 0 01-4 4H8a4 4 0 01-4-4V10z" fill="var(--blueSoft)" stroke="var(--blue)" stroke-width="2"/>
+      </svg>
+      <div class="f-name">${f.name}</div>
+      <div class="f-count">${f.docs.length} doc${f.docs.length!==1?'s':''} · <span class="${f.privacy==='priv'?'badge-priv':'badge-pub'}">${f.privacy==='priv'?'Privada':'Pública'}</span></div>
+    </div>`).join('');
+  if(tipo==='favoritos'&&folders.length===0) grid.innerHTML='<div style="text-align:center;padding:32px;color:var(--textLight);grid-column:1/-1">No hay carpetas favoritas aún</div>';
+  if(tipo==='papelera'&&folders.length===0) grid.innerHTML='<div style="text-align:center;padding:32px;color:var(--textLight);grid-column:1/-1">La papelera está vacía</div>';
+}
+
+function deleteListadoDoc(id){
+  const idx=LISTADO_DOCS.findIndex(d=>d.id===id);
+  if(idx>-1) LISTADO_DOCS.splice(idx,1);
+  renderListado();
+  showSnack('Documento eliminado');
+}
+
+function openUploadModal(){openModal('modal-upload');}
+
+function uploadDoc(){
+  const name=document.getElementById('upload-nombre').value.trim();
+  if(!name){showSnack('Ingresa un nombre');return;}
+  LISTADO_DOCS.push({id:Date.now(),name:name+'.pdf',desc:document.getElementById('upload-desc').value||'—',date:new Date().toLocaleDateString('es-PE'),estado:'carg'});
+  closeModal('modal-upload');
+  renderListado();
+  showSnack('Documento subido');
+}
+
+// ═══════════════════ PLANTILLAS ═══════════════════
+let plantillas=[...PLANTILLAS_DEFAULT];
+let ptTags=[];
+
+function addTag(){
+  const inp=document.getElementById('pt-tags-input');
+  const val=inp.value.replace(/,/g,'').trim();
+  if(!val||ptTags.includes(val)) return;
+  ptTags.push(val);
+  inp.value='';
+  renderTags();
+}
+
+function removeTag(tag){
+  ptTags=ptTags.filter(t=>t!==tag);
+  renderTags();
+}
+
+function renderTags(){
+  const c=document.getElementById('pt-tags-container');
+  c.innerHTML=ptTags.map(t=>`<span class="tag-chip">${t}<span class="rm" onclick="removeTag('${t}')">✕</span></span>`).join('');
+}
+
+function handlePtFile(input){
+  if(!input.files[0]) return;
+  const info=document.getElementById('pt-file-info');
+  document.getElementById('pt-file-name').textContent=input.files[0].name;
+  info.style.display='flex';
+}
+
+function subirPlantilla(){
+  const nombre=document.getElementById('pt-nombre').value.trim();
+  if(!nombre){showSnack('Ingresa el nombre de la plantilla');return;}
+  plantillas.push({id:Date.now(),nombre,tipo:document.getElementById('pt-tipo').value,contexto:document.getElementById('pt-contexto').value,tags:[...ptTags],estado:'Activo'});
+  document.getElementById('pt-nombre').value='';
+  document.getElementById('pt-contexto').value='';
+  ptTags=[];renderTags();
+  document.getElementById('pt-file-info').style.display='none';
+  loadPlantillas();
+  showSnack('Plantilla guardada correctamente');
+}
+
+function loadPlantillas(){
+  const tbody=document.getElementById('pt-tbody');
+  tbody.innerHTML=plantillas.map(p=>`
+    <tr style="border-bottom:1px solid var(--border)">
+      <td style="padding:11px 14px;font-weight:600;color:var(--text)">${p.nombre}</td>
+      <td style="padding:11px 14px;color:var(--muted)">${p.tipo}</td>
+      <td style="padding:11px 14px">${(p.tags||[]).map(t=>`<span class="tag-chip" style="font-size:10.5px">${t}</span>`).join(' ')||'<span style="color:var(--textLight)">—</span>'}</td>
+      <td style="padding:11px 14px"><span class="badge-proc">${p.estado}</span></td>
+      <td style="padding:11px 14px">
+        <div style="display:flex;gap:5px">
+          <button class="icon-btn" title="Editar" onclick="showSnack('Editar plantilla: ${p.nombre}')"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+          <button class="icon-btn danger" title="Eliminar" onclick="deletePlantilla(${p.id})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+        </div>
+      </td>
+    </tr>`).join('');
+}
+
+function deletePlantilla(id){
+  plantillas=plantillas.filter(p=>p.id!==id);
+  loadPlantillas();
+  showSnack('Plantilla eliminada');
+}
+
+// ═══════════════════ IA ═══════════════════
+function generar(){
+  const q=document.getElementById('ia-query').value.trim();
+  if(!q){showSnack('Escribe una consulta primero');return;}
+  const btn=document.getElementById('gbtn-txt');
+  btn.textContent='Generando…';
+  setTimeout(()=>{
+    document.getElementById('ia-empty').style.display='none';
+    const res=document.getElementById('ia-result');
+    res.style.display='flex';
+    document.getElementById('result-badge').style.display='block';
+    document.getElementById('ia-result-text').textContent='Resultado IA basado en tu consulta: "'+q+'". Se encontraron 3 documentos relacionados con los criterios indicados. Las fechas identificadas son: 12/04/2024, 28/03/2024 y 02/04/2024. El análisis contextual indica coherencia con el período solicitado.';
+    btn.textContent='Generar respuesta';
+  },1200);
+}
+
+function clearResult(){
+  document.getElementById('ia-empty').style.display='flex';
+  document.getElementById('ia-result').style.display='none';
+  document.getElementById('result-badge').style.display='none';
+  document.getElementById('ia-query').value='';
+  document.getElementById('char-count').textContent='0 caracteres';
+}
+
+// ═══════════════════ CHAT IA ═══════════════════
+// ─── Smart chat IA intent map ───
+const CHAT_INTENTS = [
+  {kw:['papá','mamá','familiar','no puede','no asistir','representar','cobrar','tramit'],doc:'autorizacion',label:'Autorización / Carta Poder',type:'poder',
+   reply:'Entendido. Cuando alguien no puede asistir personalmente, lo que necesitas es una <strong>Carta Poder</strong> o <strong>Autorización</strong>. ¿Para qué trámite específico?'},
+  {kw:['poder','apoderado','representar','delegar','facultad'],doc:'poder',label:'Carta Poder',type:'poder',
+   reply:'Para otorgar facultades a otra persona necesitas una <strong>Carta Poder</strong>. Yo te ayudo a generarla. ¿Quién es el apoderado?'},
+  {kw:['renunci','quit','dejar trabajo','renuncia'],doc:'renuncia',label:'Carta de Renuncia',type:'renuncia',
+   reply:'Para dejar tu trabajo de forma oficial necesitas una <strong>Carta de Renuncia</strong>. ¿A qué empresa y cargo?'},
+  {kw:['contrato','servicio','contratar','acuerdo','prestaci'],doc:'contrato',label:'Contrato',type:'contrato',
+   reply:'Para formalizar un acuerdo entre partes necesitas un <strong>Contrato</strong>. ¿Qué tipo de servicio o acuerdo?'},
+  {kw:['declar','jurada','bienes','domicilio','afirm'],doc:'declaracion',label:'Declaración Jurada',type:'declaracion',
+   reply:'Para declarar algo de forma oficial necesitas una <strong>Declaración Jurada</strong>. ¿Qué deseas declarar?'},
+  {kw:['acta','reuni','junta','asamblea','sesion'],doc:'acta',label:'Acta',type:'acta',
+   reply:'Para dejar constancia de una reunión necesitas un <strong>Acta</strong>. ¿Cuál es el asunto a tratar?'},
+];
+
+function detectIntent(msg){
+  const m = msg.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  for(const intent of CHAT_INTENTS){
+    if(intent.kw.some(k=>m.includes(k.normalize('NFD').replace(/[̀-ͯ]/g,'')))) return intent;
+  }
+  return null;
+}
+
+function sendSuggestion(txt){
+  document.getElementById('chat-inp-text').value=txt;
+  document.getElementById('chat-suggestions').style.display='none';
+  sendChatMsg();
+}
+
+function sendChatMsg(){
+  const inp=document.getElementById('chat-inp-text');
+  const msg=inp.value.trim();
+  if(!msg) return;
+  const msgs=document.getElementById('chat-msgs');
+  msgs.innerHTML+=`<div class="msg-user"><div class="bubble-user">${msg}</div></div>`;
+  inp.value='';
+  msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(()=>{
+    const intent=detectIntent(msg);
+    let botHTML;
+    if(intent){
+      botHTML=`<div class="msg-bot"><div class="bot-avatar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><div class="bubble-bot">${intent.reply}<br><br><button onclick="selectDoc('${intent.doc}')" style="background:linear-gradient(135deg,var(--blue),var(--blueAcc));color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;margin-top:4px;font-family:inherit">📄 Generar ${intent.label} →</button></div></div>`;
+    } else {
+      botHTML=`<div class="msg-bot"><div class="bot-avatar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><div class="bubble-bot">Puedo ayudarte con: Autorizaciones, Cartas Poder, Renuncias, Contratos, Declaraciones Juradas o Actas. ¿Cuál es tu situación?</div></div>`;
+    }
+    msgs.innerHTML+=botHTML;
+    msgs.scrollTop=msgs.scrollHeight;
+  },700);
+}
+
+// Maps doc type to form fields
+const DOC_FIELDS = {
+  autorizacion:{title:'Autorización',fields:[
+    {id:'nombres',label:'Nombres del autorizante',ph:'Mario Uribe Reyes'},
+    {id:'dni',label:'DNI del autorizante',ph:'71665423'},
+    {id:'autorizado',label:'Nombre del autorizado',ph:'Ana García López'},
+    {id:'dni2',label:'DNI del autorizado',ph:'45678901'},
+    {id:'tramite',label:'Trámite a realizar',ph:'Cobro de cheque en el Banco de la Nación',type:'textarea'},
+    {id:'fecha',label:'Fecha límite',type:'date'},
+  ]},
+  poder:{title:'Carta Poder',fields:[
+    {id:'poderdante',label:'Nombres del poderdante',ph:'Mario Uribe Reyes'},
+    {id:'dni',label:'DNI del poderdante',ph:'71665423'},
+    {id:'apoderado',label:'Nombre del apoderado',ph:'Carlos Uribe Reyes'},
+    {id:'dni2',label:'DNI del apoderado',ph:'48231567'},
+    {id:'facultades',label:'Facultades otorgadas',ph:'Cobrar pensiones, realizar trámites bancarios...',type:'textarea'},
+    {id:'direccion',label:'Dirección',ph:'Calle Tulipanes 234, Lima'},
+  ]},
+  acta:{title:'Acta',fields:[
+    {id:'lugar',label:'Lugar',ph:'Sala de reuniones, Lima'},
+    {id:'fecha',label:'Fecha',type:'date'},
+    {id:'presentes',label:'Presentes',ph:'Mario Uribe, Ana García...',type:'textarea'},
+    {id:'asunto',label:'Asunto',ph:'Acuerdo de trabajo'},
+    {id:'descripcion',label:'Descripción / Acuerdos',ph:'Detalla los acuerdos...',type:'textarea'},
+  ]},
+  contrato:{title:'Contrato',fields:[
+    {id:'tipo',label:'Tipo de contrato',ph:'Prestación de servicios'},
+    {id:'parteA',label:'Nombre Parte A',ph:'Mario Uribe Reyes'},
+    {id:'dniA',label:'DNI Parte A',ph:'71665423'},
+    {id:'parteB',label:'Nombre Parte B / Empresa',ph:'ACME SAC'},
+    {id:'objeto',label:'Objeto del contrato',ph:'Servicios de consultoría...',type:'textarea'},
+    {id:'monto',label:'Monto',ph:'S/ 2,500.00'},
+    {id:'duracion',label:'Duración',ph:'6 meses'},
+  ]},
+  declaracion:{title:'Declaración Jurada',fields:[
+    {id:'nombres',label:'Nombres completos',ph:'Mario Uribe Reyes'},
+    {id:'dni',label:'DNI',ph:'71665423'},
+    {id:'direccion',label:'Domicilio',ph:'Calle Tulipanes 234, Lima'},
+    {id:'declaracion',label:'Declaro que...',ph:'Describa los hechos bajo juramento...',type:'textarea'},
+  ]},
+  renuncia:{title:'Carta de Renuncia',fields:[
+    {id:'nombres',label:'Tu nombre completo',ph:'Mario Uribe Reyes'},
+    {id:'dni',label:'DNI',ph:'71665423'},
+    {id:'cargo',label:'Cargo',ph:'Asistente Legal'},
+    {id:'empresa',label:'Empresa',ph:'EPSON Perú SAC'},
+    {id:'motivo',label:'Motivo (opcional)',ph:'Motivos personales...'},
+    {id:'fecha',label:'Fecha efectiva',type:'date'},
+  ]},
+};
+
+function selectDoc(tipo){
+  const def=DOC_FIELDS[tipo];
+  if(!def){showSnack('Tipo no encontrado');return;}
+  // Build form HTML
+  const formHTML=def.fields.map(f=>`
+    <div style="margin-bottom:16px">
+      <label style="font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:5px">${f.label}</label>
+      ${f.type==='textarea'
+        ?`<textarea id="fld_${f.id}" rows="3" placeholder="${f.ph||''}" class="f-input" style="resize:vertical"></textarea>`
+        :f.type==='date'
+        ?`<input type="date" id="fld_${f.id}" class="f-input"/>`
+        :`<input type="text" id="fld_${f.id}" placeholder="${f.ph||''}" class="f-input"/>`
+      }
+    </div>`).join('');
+
+  // Show inline form panel
+  let panel=document.getElementById('doc-form-panel');
+  if(!panel){
+    panel=document.createElement('div');
+    panel.id='doc-form-panel';
+    panel.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400;display:flex;align-items:center;justify-content:center;padding:20px';
+    document.body.appendChild(panel);
+  }
+  panel.innerHTML=`
+    <div style="background:#fff;border-radius:18px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)">
+      <div style="padding:24px 28px 20px;border-bottom:1.5px solid var(--border);background:linear-gradient(135deg,var(--blueSoft),#dbeafe);display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <h3 style="font-size:18px;font-weight:800;color:var(--text);font-family:'Outfit',sans-serif">${def.title}</h3>
+          <p style="font-size:12px;color:var(--muted);margin-top:3px">Completa los datos para generar el documento</p>
+        </div>
+        <button onclick="document.getElementById('doc-form-panel').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--muted)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      </div>
+      <div style="padding:24px 28px">${formHTML}</div>
+      <div style="padding:16px 28px 24px;border-top:1.5px solid var(--border);display:flex;justify-content:flex-end;gap:10px">
+        <button onclick="document.getElementById('doc-form-panel').style.display='none'" class="cbtn" style="font-size:13px;padding:9px 20px">Cancelar</button>
+        <button onclick="generarDocDesdeForm('${tipo}')" class="gbtn" style="font-size:13px;padding:9px 24px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          Generar documento
+        </button>
+      </div>
+    </div>`;
+  panel.style.display='flex';
+
+  // Also add chat message
+  const msgs=document.getElementById('chat-msgs');
+  if(msgs){
+    msgs.innerHTML+=`<div class="msg-bot"><div class="bot-avatar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div><div class="bubble-bot">Perfecto. He abierto el formulario para <strong>${def.title}</strong>. Completa los datos y presiona "Generar documento".</div></div>`;
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+}
+
+function generarDocDesdeForm(tipo){
+  const def=DOC_FIELDS[tipo];
+  if(!def) return;
+  const data={};
+  def.fields.forEach(f=>{const el=document.getElementById('fld_'+f.id);if(el) data[f.id]=el.value;});
+  // Hide form
+  const panel=document.getElementById('doc-form-panel');
+  if(panel) panel.style.display='none';
+  // Build preview doc
+  buildAndShowPreview(tipo,def.title,data);
+}
+
+function buildAndShowPreview(tipo,title,data){
+  const fecha=new Date().toLocaleDateString('es-PE',{day:'2-digit',month:'long',year:'numeric'});
+  let html=`<div style="text-align:center;margin-bottom:28px"><p style="font-size:10px;color:var(--textLight);text-transform:uppercase;letter-spacing:.1em">EPSON.IA · Documento generado</p><h1 style="font-size:20px;font-weight:800;color:var(--blue);margin:6px 0;font-family:'Outfit',sans-serif">${title.toUpperCase()}</h1><div style="width:50px;height:3px;background:var(--blue);margin:0 auto;border-radius:2px"></div></div>`;
+  html+=`<p style="margin-bottom:16px;font-size:13px;color:var(--muted);text-align:center">Ciudad de Lima, ${fecha}</p>`;
+  const pairs=Object.entries(data).filter(([,v])=>v);
+  pairs.forEach(([k,v])=>{
+    html+=`<div style="margin-bottom:12px;padding:10px 14px;background:var(--blueSoft);border-radius:8px;border:1px solid rgba(16,33,139,.15)"><p style="font-size:10px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px">${k.replace(/_/g,' ')}</p><p style="font-size:13.5px;color:var(--text)">${v}</p></div>`;
+  });
+  html+=`<div style="margin-top:40px;text-align:center"><div style="display:inline-block"><div style="border-top:1.5px solid #d1d5db;padding-top:8px;min-width:180px"><p style="font-size:12px;color:var(--muted)">Firma del solicitante</p></div></div></div>`;
+
+  let preview=document.getElementById('doc-preview-panel');
+  if(!preview){
+    preview=document.createElement('div');
+    preview.id='doc-preview-panel';
+    preview.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:400;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;overflow-y:auto;padding:20px';
+    document.body.appendChild(preview);
+  }
+  preview.innerHTML=`
+    <div style="background:#e8eef7;width:100%;max-width:860px;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.2)">
+      <div style="background:#fff;border-bottom:1.5px solid var(--border);padding:12px 20px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:13px;font-weight:700;color:var(--text)">${title}</span>
+        <span style="font-size:11px;color:var(--textLight)">· Generado por EPSON.IA · ${fecha}</span>
+        <div style="margin-left:auto;display:flex;gap:8px">
+          <button onclick="window.print()" class="gbtn" style="font-size:12px;padding:7px 14px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg> Imprimir</button>
+          <button onclick="enviarDocumento()" class="gbtn" style="font-size:12px;padding:7px 14px;background:linear-gradient(135deg,#059669,#047857)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Enviar</button>
+          <button onclick="document.getElementById('doc-preview-panel').style.display='none'" style="background:none;border:1.5px solid var(--border);border-radius:8px;padding:7px 12px;font-size:12px;cursor:pointer;color:var(--muted)">✕ Cerrar</button>
+        </div>
+      </div>
+      <div style="padding:28px 32px;display:flex;justify-content:center">
+        <div style="background:#fff;border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.1);padding:48px 56px;max-width:680px;width:100%;font-size:14px;line-height:1.8">${html}</div>
+      </div>
+    </div>`;
+  preview.style.display='flex';
+}
+
+// ═══════════════════ DOCS HELPERS ═══════════════════
+function toggleAllDocs(cb){
+  document.querySelectorAll('.doc-check').forEach(c=>c.checked=cb.checked);
+}
+
+function getCheckedDocs(){
+  return [...document.querySelectorAll('.doc-check:checked')].map(c=>parseInt(c.dataset.id));
+}
+
+function toggleDocPrivacy(docId, val){
+  if(!activeFolder) return;
+  const doc=activeFolder.docs.find(d=>d.id===docId);
+  if(doc){ doc.priv=(val==='priv'); showSnack(val==='priv'?'Documento marcado como Privado':'Documento marcado como Público'); }
+}
+
+function procesarDoc(docId){
+  if(!activeFolder) return;
+  const doc=activeFolder.docs.find(d=>d.id===docId);
+  if(!doc) return;
+  showSnack('Enviando a procesar con IA…');
+  setTimeout(()=>{doc.estado='proc';renderFolderDocs();showSnack('✓ Documento procesado por IA');},1500);
+}
+
+function openMoveSelected(singleId){
+  const sel=document.getElementById('move-dest');
+  sel.innerHTML=FOLDERS.filter(f=>f.id!==activeFolder.id).map(f=>`<option value="${f.id}">${f.name}</option>`).join('');
+  window._moveDocId=singleId;
+  openModal('modal-move-doc');
+}
+
+// ═══════════════════ DOCS HELPERS ═══════════════════
+function toggleAllDocs(cb){
+  document.querySelectorAll('.doc-check').forEach(c=>c.checked=cb.checked);
+}
+function getCheckedDocs(){
+  return [...document.querySelectorAll('.doc-check:checked')].map(c=>parseInt(c.dataset.id));
+}
+function toggleDocPrivacyBtn(docId){
+  if(!activeFolder) return;
+  const doc=activeFolder.docs.find(d=>d.id===docId);
+  if(!doc) return;
+  doc.priv=!doc.priv;
+  const btn=document.getElementById('priv-btn-'+docId);
+  if(btn){
+    btn.className=doc.priv?'badge-priv-btn':'badge-pub-btn';
+    btn.textContent=doc.priv?'🔒 Privado':'🌐 Público';
+  }
+  showSnack(doc.priv?'Documento marcado como Privado':'Documento marcado como Público');
+}
+function toggleDocPrivacy(docId,val){
+  if(!activeFolder) return;
+  const doc=activeFolder.docs.find(d=>d.id===docId);
+  if(doc){doc.priv=(val==='priv');showSnack(val==='priv'?'Documento marcado como Privado':'Documento marcado como Público');}
+}
+function procesarDoc(docId){
+  if(!activeFolder) return;
+  const doc=activeFolder.docs.find(d=>d.id===docId);
+  if(!doc) return;
+  showSnack('Enviando a procesar con IA…');
+  setTimeout(()=>{doc.estado='proc';renderFolderDocs();showSnack('✓ Documento procesado por IA');},1500);
+}
+function openMoveSelected(singleId){
+  const sel=document.getElementById('move-dest');
+  sel.innerHTML=FOLDERS.filter(f=>activeFolder&&f.id!==activeFolder.id).map(f=>`<option value="${f.id}">${f.name}</option>`).join('');
+  window._moveDocId=singleId;
+  openModal('modal-move-doc');
+}
+// ═══════════════════ FAQ ═══════════════════
+function toggleFaq(el){
+  const a=el.nextElementSibling;
+  const ch=el.querySelector('.faq-chevron');
+  a.classList.toggle('open');
+  if(ch) ch.classList.toggle('open');
+}
+
+// ═══════════════════ SNACK ═══════════════════
+let snackTimer;
+function showSnack(msg){
+  const s=document.getElementById('snack');
+  s.textContent=msg;
+  s.style.display='flex';
+  clearTimeout(snackTimer);
+  snackTimer=setTimeout(()=>s.style.display='none',2800);
+}
+
+// ═══════════════════ ENVIAR DOCUMENTO ═══════════════════
+function enviarDocumento(){
+  const p=document.getElementById('doc-preview-panel');
+  if(p) p.style.display='none';
+  openModal('modal-envio-doc');
+}
+
+// ═══════════════════ BANNER ═══════════════════
+(function(){
+  const imgs=document.querySelectorAll('.banner');
+  let cur=0;
+  setInterval(()=>{imgs[cur].classList.remove('active');cur=(cur+1)%imgs.length;imgs[cur].classList.add('active');},4000);
+})();
+
+// ═══════════════════ LOGOUT ═══════════════════
+function handleLogout(){
+  showSnack('Sesión cerrada');
+  window.location.href = 'Login1.html';
+}
+
+// ═══════════════════ FOLDER GRID (búsqueda) ═══════════════════
+(function(){
+  const g=document.getElementById('folder-grid2');
+  if(!g) return;
+  ['Contratos','Actas','Poderes','Declaraciones','Escaneados'].forEach(name=>{
+    const d=document.createElement('div');
+    d.className='folder';
+    d.innerHTML=`<svg width="36" height="36" viewBox="0 0 48 48" fill="none"><path d="M4 10a4 4 0 014-4h10l4 6h18a4 4 0 014 4v22a4 4 0 01-4 4H8a4 4 0 01-4-4V10z" fill="var(--blueSoft)" stroke="var(--blue)" stroke-width="2"/></svg><span style="font-size:12px;font-weight:600;color:var(--text);text-align:center">${name}</span>`;
+    g.appendChild(d);
+  });
+})();
+
+// Init
+renderListado();
+loadPlantillas();
+</script>
+</body>
+</html>
