@@ -96,7 +96,7 @@
 <script>
 // Mock user DB — back end will replace with API call
 const USERS = [
-  {email:'admin@epson.com',  pass:'admin123',  name:'Mario Uribe',    roles:['Administrador','Operador','Visor']},
+  {email:'admin@epson.com',  pass:'admin123',  name:'Mario Uribe',    roles:['Administrador','Operador Documental','Visitante']},
   {email:'operador@epson.com',pass:'op123',    name:'Ana García',     roles:['Operador']},
   {email:'visor@epson.com',  pass:'visor123',  name:'Carlos Santos',  roles:['Visor']},
   {email:'demo@epson.com',   pass:'demo',      name:'Usuario Demo',   roles:['Administrador','Operador']},
@@ -140,13 +140,13 @@ function showRoleSelection(user){
   const grid=document.getElementById('rs-roles-grid');
   const ROLE_ICONS={
     'Administrador':'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M12 2l3 6.5L22 9.3l-5 4.9 1.2 6.8L12 18l-6.2 3 1.2-6.8L2 9.3l7-.8z"/></svg>',
-    'Operador':'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>',
-    'Visor':'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
+    'Operador Documental':'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>',
+    'Visitante':'<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
   };
   const ROLE_DESC={
-    'Administrador':'Acceso total al sistema: gestión de usuarios, configuración y todas las funciones.',
-    'Operador':'Gestión de documentos, consultas IA y generación de documentos.',
-    'Visor':'Solo lectura: puede ver y buscar documentos procesados.'
+    'Administrador':'Acceso total sin restricciones. Gestiona todos los módulos, usuarios, roles, notarías y configuración completa del sistema.',
+    'Operador Documental':'Digitaliza documentos vía API Epson o upload, los procesa con IA, gestiona el Listado y sube plantillas al sistema.',
+    'Visitante':'Cliente de la notaría. Sesión de kiosco temporal. Solo puede usar Generación de Documentos con asistencia del Agente SONIA.'
   };
   grid.innerHTML=user.roles.map(r=>`
     <div onclick="selectRole('${r}')" style="background:#fff;border:2px solid var(--border);border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .18s;text-align:center" onmouseover="this.style.borderColor='var(--blue)';this.style.boxShadow='0 4px 16px rgba(16,33,139,.12)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none';this.style.transform='none'">
